@@ -10,45 +10,42 @@
    Matches www.robotics.lth.se (RobotLab LTH), which runs Lund University's
    current web design:
 
-   - Near-black text on white, with a single pale sage panel colour for cards.
-     Bronze is an accent only (subtitle, current menu item), and the profile's
-     dark blue appears just in the footer and the logotype.
+   - Near-black text on white. The profile bronze carries the site name,
+     card headings and the current menu item; the menu sits in a light grey
+     band and the footer is a dark charcoal band.
    - Adobe Garamond Pro for headings, Frutiger LT Std for body text, per LU's
      graphic profile. Both are licensed, so the stacks fall back to EB Garamond
      and Source Sans 3.
-   - Cards pair a photograph with a pale panel; a headline in a panel carries a
-     circled chevron. Buttons are outlined pills.
+   - The hero and image cards carry a white caption box with a small label
+     tag; flat cards alternate a pale blue and a pale beige panel. Headlines
+     end in a circled chevron and buttons are outlined pills.
    ========================================================================== */
+
 :root {
-  --ink:        #1d1d1b;
-  /* headings and body text */
-  --ink-soft:   #4d4c44;
-  /* LU dark grey, secondary text */
-  --bronze:     #9c6114;
-  /* profile colour, used as an accent */
-  --navy:       #000080;
-  /* profile colour, logotype */
-  --footer:     #141428;
-  /* the dark footer band */
-  --panel:      #dfe8e1;
-  /* pale sage: the card and info panel colour */
-  --panel-warm: #ece9e1;
-  /* small label bars under card images */
-  --strip:      #f4f4f2;
-  /* utility bar */
+  --ink:        #1d1d1b;  /* headings and body text */
+  --ink-soft:   #4d4c44;  /* LU dark grey, secondary text */
+  --bronze:     #9c6114;  /* profile colour: site name, headings, accents */
+  --bronze-deep:#7d4e10;  /* darker bronze for the site name */
+  --navy:       #000080;  /* profile colour, logotype */
+  --footer:     #31302e;  /* the dark footer band */
+
+  --panel:      #dbe7f1;  /* pale blue: flat info cards */
+  --panel-warm: #ece8dc;  /* pale beige: image cards and label tags */
+  --strip:      #efefee;  /* main menu band */
   --paper:      #ffffff;
   --rule:       #d8d5cc;
   --rule-soft:  #e8e6df;
+
   --serif: "Adobe Garamond Pro", "EB Garamond", Garamond, Georgia, "Times New Roman", serif;
   --sans: "Frutiger LT Std", Frutiger, "Source Sans 3", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
   --wrap: 1180px;
-  --text: 42rem; }
+  --text: 42rem;
+}
 
-*, *::before, *::after {
-  box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
 
-html {
-  -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
@@ -56,46 +53,31 @@ body {
   color: var(--ink);
   font-family: var(--sans);
   font-size: 16px;
-  line-height: 1.6; }
+  line-height: 1.6;
+}
 
 h1, h2, h3, h4 {
   font-family: var(--serif);
   font-weight: 600;
   color: var(--ink);
   line-height: 1.22;
-  margin: 0 0 .5em; }
+  margin: 0 0 .5em;
+}
 
-a {
-  color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: .16em; }
+a { color: var(--ink); text-decoration: underline; text-underline-offset: .16em; }
+a:hover { color: var(--bronze); }
 
-a:hover {
-  color: var(--bronze); }
+img { max-width: 100%; height: auto; }
 
-img {
-  max-width: 100%;
-  height: auto; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
 
-.wrap {
-  max-width: var(--wrap);
-  margin: 0 auto;
-  padding: 0 24px; }
-
-.skip {
-  position: absolute;
-  left: -9999px;
-  background: var(--paper);
-  padding: 10px 16px;
-  z-index: 10; }
-
-.skip:focus {
-  left: 12px;
-  top: 12px; }
+.skip { position: absolute; left: -9999px; background: var(--paper); padding: 10px 16px; z-index: 10; }
+.skip:focus { left: 12px; top: 12px; }
 
 a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 3px solid var(--bronze);
-  outline-offset: 2px; }
+  outline-offset: 2px;
+}
 
 /* Circled chevron after a panel headline, as on robotics.lth.se */
 .chev {
@@ -110,7 +92,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   font-family: var(--sans);
   font-size: .68em;
   line-height: 1;
-  vertical-align: .12em; }
+  vertical-align: .12em;
+}
 
 /* Outlined pill button */
 .btn {
@@ -121,134 +104,91 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   font-size: 15px;
   color: var(--ink);
   text-decoration: none;
-  background: transparent; }
-
-.btn:hover {
-  background: var(--ink);
-  color: var(--paper); }
+  background: transparent;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
 
 /* --------------------------------------------------------------------------
-   Utility bar, masthead, navigation
+   Utility row, masthead, navigation
    -------------------------------------------------------------------------- */
-.utility {
-  background: var(--strip);
-  font-size: 12px; }
-
-.utility .wrap {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  min-height: 30px; }
-
-.utility a {
-  color: var(--ink-soft);
-  text-decoration: none; }
-
-.utility a:hover {
-  color: var(--bronze);
-  text-decoration: underline; }
-
-.utility .spacer {
-  flex: 1 1 auto; }
+.utility { background: var(--paper); font-size: 12px; }
+.utility .wrap { display: flex; align-items: center; gap: 20px; min-height: 30px; padding-top: 6px; }
+.utility a { color: var(--ink); text-decoration: none; }
+.utility a:hover { color: var(--bronze); text-decoration: underline; }
+.utility .spacer { flex: 1 1 auto; }
+.utility .listen { display: inline-flex; align-items: center; gap: 5px; }
+.utility .listen-icon { color: var(--bronze); font-size: 11px; }
 
 .masthead .wrap {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 32px;
-  padding-top: 22px;
-  padding-bottom: 20px; }
+  padding-top: 10px;
+  padding-bottom: 22px;
+}
+.masthead-id { flex: 1 1 auto; min-width: 0; }
+.masthead-title { font-size: 34px; margin: 0; color: var(--bronze-deep); }
+.masthead-title a { color: var(--bronze-deep); text-decoration: none; }
+.masthead-title a:hover { color: var(--bronze-deep); }
+.masthead-rule { border: 0; border-top: 1px solid var(--rule); margin: 8px 0 7px; max-width: 460px; }
+.masthead-sub { margin: 0; font-size: 12.5px; color: var(--bronze); }
 
-.masthead-id {
-  flex: 1 1 auto;
-  min-width: 0; }
-
-.masthead-title {
-  font-size: 30px;
-  margin: 0; }
-
-.masthead-title a {
-  color: var(--ink);
-  text-decoration: none; }
-
-.masthead-title a:hover {
-  color: var(--ink); }
-
-.masthead-rule {
-  border: 0;
-  border-top: 1px solid var(--rule);
-  margin: 8px 0 6px;
-  max-width: 420px; }
-
-.masthead-sub {
-  margin: 0;
-  font-size: 12px;
-  color: var(--bronze); }
-
-.masthead-tools {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  padding-top: 6px; }
-
-.masthead-logo img {
-  width: 168px; }
+.masthead-tools { display: flex; align-items: center; gap: 30px; padding-top: 8px; }
+.masthead-logo img { width: 190px; }
 
 .searchbox {
   display: flex;
-  align-items: stretch; }
-
-.searchbox input {
+  align-items: stretch;
   border: 1px solid var(--rule);
+  border-radius: 999px;
   background: var(--paper);
+  overflow: hidden;
+}
+.searchbox input {
+  border: 0;
+  background: transparent;
   font-family: inherit;
   font-size: 13px;
-  padding: 7px 11px;
-  width: 186px; }
-
+  padding: 8px 8px 8px 16px;
+  width: 176px;
+}
+.searchbox input:focus { outline: none; }
 .searchbox button {
-  border: 1px solid var(--ink);
-  background: var(--ink);
+  border: 0;
+  border-radius: 999px;
+  background: var(--bronze);
   color: var(--paper);
   font-family: inherit;
   font-size: 13px;
-  padding: 7px 16px;
-  cursor: pointer; }
+  padding: 8px 20px;
+  margin: 2px;
+  cursor: pointer;
+}
+.searchbox button:hover { background: var(--bronze-deep); }
+.searchbox:focus-within { outline: 3px solid var(--bronze); outline-offset: 2px; }
 
-.searchbox button:hover {
-  background: var(--bronze);
-  border-color: var(--bronze); }
-
-.mainnav {
-  border-top: 1px solid var(--rule-soft);
-  border-bottom: 1px solid var(--rule-soft); }
-
-.mainnav ul {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  list-style: none; }
-
-.mainnav > .wrap > ul > li {
-  position: relative; }
-
+.mainnav { background: var(--strip); }
+/* Scoped to the top-level list only: a bare `.mainnav ul` would also match
+   the submenus and, at higher specificity than `.submenu`, force every
+   drop-down permanently open. */
+.mainnav > .wrap > ul { display: flex; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; }
+.mainnav > .wrap > ul > li { position: relative; margin-right: 34px; }
 .mainnav > .wrap > ul > li > a {
   display: block;
-  padding: 12px 20px 12px 0;
+  padding: 13px 0;
   color: var(--ink);
-  font-size: 14px;
+  font-size: 13.5px;
   text-decoration: none;
-  border-bottom: 3px solid transparent; }
-
-.mainnav > .wrap > ul > li > a:hover {
-  color: var(--bronze); }
-
-.mainnav > .wrap > ul > li.is-current > a {
-  border-bottom-color: var(--bronze); }
+  border-bottom: 3px solid transparent;
+}
+.mainnav > .wrap > ul > li > a:hover { color: var(--bronze); }
+.mainnav > .wrap > ul > li.is-current > a { border-bottom-color: var(--bronze); }
 
 .submenu {
   display: none;
+  margin: 0;
+  list-style: none;
   position: absolute;
   top: 100%;
   left: -14px;
@@ -258,80 +198,53 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   border: 1px solid var(--rule-soft);
   border-top: 2px solid var(--bronze);
   padding: 8px 0;
-  flex-direction: column; }
-
-.mainnav li:hover > .submenu {
-  display: flex; }
-
-.mainnav li:focus-within > .submenu {
-  display: flex; }
-
-.submenu a {
-  display: block;
-  padding: 7px 18px;
-  font-size: 14px;
-  text-decoration: none; }
-
-.submenu a:hover {
-  color: var(--bronze);
-  text-decoration: underline; }
+  flex-direction: column;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .08);
+}
+.mainnav li:hover > .submenu { display: flex; }
+.mainnav li.is-open > .submenu { display: flex; }
+.submenu a { display: block; padding: 7px 18px; font-size: 14px; text-decoration: none; }
+.submenu a:hover { color: var(--bronze); text-decoration: underline; }
 
 /* --------------------------------------------------------------------------
    Front page
    -------------------------------------------------------------------------- */
-.home {
-  padding-top: 24px; }
+.home { padding-top: 24px; }
 
-.hero {
-  position: relative; }
+.hero { position: relative; }
+.slide { display: none; }
+.slide.is-active { display: block; }
+.hero-media { position: relative; background: var(--panel-warm); }
+.hero-media img { display: block; width: 100%; height: 460px; object-fit: cover; }
 
-.slide {
-  display: none; }
-
-.slide.is-active {
-  display: block; }
-
-.hero-media {
-  position: relative;
-  background: var(--panel-warm); }
-
-.hero-media img {
-  display: block;
-  width: 100%;
-  height: 420px;
-  object-fit: cover; }
-
+/* White caption box with a small label tag beneath, as on robotics.lth.se */
 .hero-caption {
   position: absolute;
   left: 0;
-  bottom: 22px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 14px 26px 14px 24px;
-  max-width: 76%; }
-
-.hero-caption h2 {
-  font-size: 21px;
-  margin: 0; }
-
-.hero-caption a {
-  text-decoration: none; }
-
-.hero-caption a:hover {
-  color: var(--ink);
-  text-decoration: underline; }
-
-.hero-label {
-  background: var(--panel-warm);
-  padding: 9px 24px;
-  font-size: 13px;
-  color: var(--ink-soft); }
-
-.slider-controls {
+  bottom: 20px;
   display: flex;
-  gap: 8px;
-  justify-content: flex-end;
-  padding-top: 10px; }
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  max-width: 76%;
+}
+.hero-caption h2 {
+  background: rgba(255, 255, 255, .96);
+  padding: 13px 28px 13px 24px;
+  font-size: 25px;
+  margin: 0;
+}
+.hero-caption a { text-decoration: none; }
+.hero-caption a:hover { color: var(--ink); text-decoration: underline; }
+.hero-tag {
+  background: var(--paper);
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--ink);
+  margin: 0;
+}
 
+.slider-controls { display: flex; gap: 8px; justify-content: flex-end; padding-top: 10px; }
 .slider-controls button {
   border: 1px solid var(--rule);
   background: var(--paper);
@@ -340,63 +253,30 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   height: 34px;
   font-size: 12px;
   line-height: 1;
-  cursor: pointer; }
+  cursor: pointer;
+}
+.slider-controls button:hover { border-color: var(--ink); }
 
-.slider-controls button:hover {
-  border-color: var(--ink); }
+.intro { text-align: center; max-width: 34rem; margin: 44px auto 0; }
+.intro p { margin: 0 0 22px; }
 
-.intro {
-  text-align: center;
-  max-width: 34rem;
-  margin: 44px auto 0; }
+/* Card mosaic: image cards over a beige panel, flat cards in pale blue */
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; margin-top: 52px; align-items: start; }
+.card { background: var(--panel-warm); }
+.card--blue { background: var(--panel); }
+.card-media { position: relative; }
+.card-media img { display: block; width: 100%; height: 320px; object-fit: cover; }
+.card-body { padding: 20px 24px 24px; }
+.card h2 { font-size: 22px; margin: 0 0 8px; color: var(--bronze); }
+.card h2 a { color: var(--bronze); text-decoration: none; }
+.card h2 a:hover { color: var(--bronze-deep); text-decoration: underline; }
+.card p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink); }
+.card-body > :last-child { margin-bottom: 0; }
 
-.intro p {
-  margin: 0 0 22px; }
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 26px;
-  margin-top: 52px; }
-
-.card {
-  background: var(--panel);
-  padding: 20px 24px 24px; }
-
-.card h2 {
-  font-size: 19px;
-  margin: 0 0 8px; }
-
-.card h2 a {
-  text-decoration: none; }
-
-.card h2 a:hover {
-  color: var(--ink);
-  text-decoration: underline; }
-
-.card p {
-  margin: 0 0 10px;
-  font-size: 14px;
-  color: var(--ink-soft); }
-
-.card > :last-child {
-  margin-bottom: 0; }
-
-.calendar-item {
-  margin-bottom: 14px; }
-
-.calendar-kind {
-  margin: 0;
-  font-size: 12px;
-  color: var(--ink-soft); }
-
-.calendar-item h3 {
-  font-size: 16px;
-  margin: 0 0 2px; }
-
-.calendar-item p {
-  margin: 0;
-  font-size: 14px; }
+.calendar-item { margin-bottom: 14px; }
+.calendar-kind { margin: 0; font-size: 12px; color: var(--ink-soft); }
+.calendar-item h3 { font-size: 16px; margin: 0 0 2px; }
+.calendar-item p { margin: 0; font-size: 14px; }
 
 .section-head {
   display: flex;
@@ -405,291 +285,207 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   gap: 20px;
   border-bottom: 1px solid var(--rule-soft);
   margin: 64px 0 4px;
-  padding-bottom: 10px; }
+  padding-bottom: 10px;
+}
+.section-head h2 { font-size: 24px; margin: 0; }
+.section-head a { font-size: 14px; text-decoration: none; }
+.section-head a:hover { text-decoration: underline; }
 
-.section-head h2 {
-  font-size: 24px;
-  margin: 0; }
-
-.section-head a {
-  font-size: 14px;
-  text-decoration: none; }
-
-.section-head a:hover {
-  text-decoration: underline; }
-
-.newsfeed {
-  padding-bottom: 10px; }
-
+.newsfeed { padding-bottom: 10px; }
 .news-item {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
   border-bottom: 1px solid var(--rule-soft);
   padding: 22px 0;
-  max-width: var(--text); }
+  max-width: 54rem;
+}
+.news-thumb { flex: 0 0 190px; }
+.news-thumb img { display: block; width: 190px; height: 128px; object-fit: cover; background: var(--panel-warm); }
+.news-text { flex: 1 1 auto; min-width: 0; }
+.news-item h2 { font-size: 21px; margin-bottom: 3px; }
+.news-item h2 a { text-decoration: none; }
+.news-item h2 a:hover { text-decoration: underline; }
+.news-date { font-size: 13px; color: var(--ink-soft); margin: 0 0 8px; }
+.news-item p { margin: 0; font-size: 15px; }
+.news-item .more { text-decoration: none; white-space: nowrap; }
+.news-item .more:hover { text-decoration: underline; }
 
-.news-item h2 {
-  font-size: 21px;
-  margin-bottom: 3px; }
-
-.news-item h2 a {
-  text-decoration: none; }
-
-.news-item h2 a:hover {
-  text-decoration: underline; }
-
-.news-date {
-  font-size: 13px;
-  color: var(--ink-soft);
-  margin: 0 0 8px; }
-
-.news-item p {
-  margin: 0;
-  font-size: 15px; }
-
-.news-item .more {
-  text-decoration: none;
-  white-space: nowrap; }
-
-.news-item .more:hover {
-  text-decoration: underline; }
-
-.pagination {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 24px 0 64px;
-  font-size: 14px; }
-
-.pagination .count {
-  margin-right: auto;
-  color: var(--ink-soft); }
-
-.pagination a {
-  text-decoration: none; }
-
-.pagination a:hover {
-  text-decoration: underline; }
+.pagination { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; padding: 24px 0 64px; font-size: 14px; }
+.pagination .count { margin-right: auto; color: var(--ink-soft); }
+.pagination a { text-decoration: none; }
+.pagination a:hover { text-decoration: underline; }
 
 /* --------------------------------------------------------------------------
    Inner pages
    -------------------------------------------------------------------------- */
-.breadcrumb {
-  font-size: 13px;
-  padding: 16px 0 8px;
-  color: var(--ink-soft); }
+.breadcrumb { font-size: 13px; padding: 16px 0 8px; color: var(--ink-soft); }
+.breadcrumb a { color: var(--ink-soft); text-decoration: none; }
+.breadcrumb a:hover { color: var(--bronze); text-decoration: underline; }
 
-.breadcrumb a {
-  color: var(--ink-soft);
-  text-decoration: none; }
+.columns { display: flex; gap: 52px; align-items: flex-start; padding-bottom: 64px; }
 
-.breadcrumb a:hover {
-  color: var(--bronze);
-  text-decoration: underline; }
-
-.columns {
-  display: flex;
-  gap: 52px;
-  align-items: flex-start;
-  padding-bottom: 64px; }
-
-.sidebar {
-  flex: 0 0 244px;
-  padding-top: 10px; }
-
-.sidebar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0; }
-
-.sidebar > ul > li {
-  border-bottom: 1px solid var(--rule-soft); }
-
+.sidebar { flex: 0 0 244px; padding-top: 10px; }
+.sidebar ul { list-style: none; margin: 0; padding: 0; }
+.sidebar > ul > li { border-bottom: 1px solid var(--rule-soft); }
 .sidebar > ul > li > a {
   display: block;
   padding: 10px 0 10px 13px;
   border-left: 3px solid transparent;
   color: var(--ink);
   font-size: 14px;
-  text-decoration: none; }
-
-.sidebar > ul > li > a:hover {
-  color: var(--bronze);
-  border-left-color: var(--rule); }
-
-.sidebar > ul > li.is-current > a {
-  border-left-color: var(--bronze);
-  font-weight: 600; }
-
-.sidebar > ul > li.is-open > a {
-  border-left-color: var(--bronze);
-  font-weight: 600; }
-
-.sidebar .sub {
-  padding: 0 0 8px 16px; }
-
+  text-decoration: none;
+}
+.sidebar > ul > li > a:hover { color: var(--bronze); border-left-color: var(--rule); }
+.sidebar > ul > li.is-current > a { border-left-color: var(--bronze); font-weight: 600; }
+.sidebar > ul > li.is-open > a { border-left-color: var(--bronze); font-weight: 600; }
+.sidebar .sub { padding: 0 0 8px 16px; }
 .sidebar .sub a {
   display: block;
   padding: 5px 0 5px 12px;
   border-left: 1px solid var(--rule-soft);
   font-size: 13px;
   color: var(--ink-soft);
-  text-decoration: none; }
+  text-decoration: none;
+}
+.sidebar .sub a:hover { color: var(--bronze); }
+.sidebar .sub li.is-current > a { color: var(--ink); font-weight: 600; }
 
-.sidebar .sub a:hover {
-  color: var(--bronze); }
+.content { flex: 1 1 auto; min-width: 0; max-width: var(--text); }
+.page-title { font-size: 38px; margin: 6px 0 22px; }
+.post-image { margin: 0 0 22px; }
+.post-image img { display: block; width: 100%; max-height: 380px; object-fit: cover; background: var(--panel-warm); }
+.content h2 { font-size: 25px; margin-top: 38px; }
+.content h3 { font-size: 20px; margin-top: 30px; }
+.content h4 { font-family: var(--sans); font-size: 16px; font-weight: 700; margin-top: 24px; }
+.content p { margin: 0 0 16px; }
+.content ul, .content ol { margin: 0 0 18px; padding-left: 22px; }
+.content li { margin-bottom: 7px; }
+.content .linklist { list-style: none; padding-left: 0; }
+.content .linklist li { margin-bottom: 12px; }
+.content .linklist a { font-family: var(--serif); font-size: 20px; text-decoration: none; }
+.content .linklist a:hover { text-decoration: underline; }
 
-.sidebar .sub li.is-current > a {
-  color: var(--ink);
-  font-weight: 600; }
+.content--wide { max-width: none; }
 
-.content {
-  flex: 1 1 auto;
-  min-width: 0;
-  max-width: var(--text); }
+/* --------------------------------------------------------------------------
+   People
+   -------------------------------------------------------------------------- */
+.people-count { font-size: 13px; color: var(--ink-soft); margin: 0 0 18px; }
 
-.page-title {
-  font-size: 38px;
-  margin: 6px 0 22px; }
-
-.content h2 {
-  font-size: 25px;
-  margin-top: 38px; }
-
-.content h3 {
-  font-size: 20px;
-  margin-top: 30px; }
-
-.content h4 {
-  font-family: var(--sans);
-  font-size: 16px;
-  font-weight: 700;
-  margin-top: 24px; }
-
-.content p {
-  margin: 0 0 16px; }
-
-.content ul, .content ol {
-  margin: 0 0 18px;
-  padding-left: 22px; }
-
-.content li {
-  margin-bottom: 7px; }
-
-.content .linklist {
+.content .people-grid {
   list-style: none;
-  padding-left: 0; }
+  margin: 0 0 26px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px 40px;
+}
+.content .person-card { display: flex; margin: 0; gap: 14px; align-items: flex-start; min-width: 0; }
+.person-card-photo { flex: 0 0 56px; }
+.person-card-photo img {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  background: var(--rule-soft);
+}
+.person-card-text { flex: 1 1 auto; min-width: 0; }
+.person-card h2 { font-size: 19px; margin: 0 0 4px; }
+.person-card h2 a { color: var(--bronze); text-decoration: none; }
+.person-card h2 a:hover { color: var(--bronze-deep); text-decoration: underline; }
+.person-card p { margin: 0 0 2px; font-size: 12.5px; line-height: 1.45; }
+.person-card-email a { color: var(--bronze); text-decoration: none; overflow-wrap: anywhere; }
+.person-card-email a:hover { text-decoration: underline; }
+.person-card-role { color: var(--ink); }
+.content .person-card-affiliations { list-style: none; margin: 0 0 2px; padding: 0; }
+.content .person-card-affiliations li { font-size: 12.5px; line-height: 1.45; color: var(--bronze); margin: 0; }
 
-.content .linklist li {
-  margin-bottom: 12px; }
+/* Long descriptions are clamped so a wordy entry can never break the grid;
+   the full text lives on the person's own page. */
+.person-card-desc {
+  color: var(--ink-soft);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+}
 
-.content .linklist a {
-  font-family: var(--serif);
-  font-size: 20px;
-  text-decoration: none; }
+/* Person profile page */
+.person-head { display: flex; gap: 26px; align-items: flex-start; margin-bottom: 26px; }
+.person-portrait {
+  flex: 0 0 140px;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  background: var(--rule-soft);
+}
+.person-head-text { flex: 1 1 auto; min-width: 0; }
+.person-head .page-title { margin: 0 0 4px; }
+.person-role { margin: 0 0 8px; font-size: 15px; color: var(--ink-soft); }
+.content .person-contact { list-style: none; margin: 0 0 8px; padding: 0; font-size: 14px; }
+.person-contact li { margin-bottom: 2px; }
+.person-contact a { color: var(--bronze); text-decoration: none; overflow-wrap: anywhere; }
+.person-contact a:hover { text-decoration: underline; }
+.content .person-affiliations { list-style: none; margin: 0; padding: 0; font-size: 13px; }
+.person-affiliations li { color: var(--bronze); margin-bottom: 2px; }
 
-.content .linklist a:hover {
-  text-decoration: underline; }
-
-.content table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 0 0 22px; }
-
+.content table { border-collapse: collapse; width: 100%; margin: 0 0 22px; }
 .content th, .content td {
   text-align: left;
   padding: 9px 14px 9px 0;
   border-bottom: 1px solid var(--rule-soft);
   vertical-align: top;
-  font-size: 15px; }
-
-.content th {
-  font-weight: 700;
-  border-bottom-color: var(--rule); }
+  font-size: 15px;
+}
+.content th { font-weight: 700; border-bottom-color: var(--rule); }
 
 .content blockquote {
   margin: 0 0 18px;
   padding-left: 18px;
   border-left: 3px solid var(--panel);
   font-family: var(--serif);
-  font-size: 19px; }
-
+  font-size: 19px;
+}
 .content code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: .88em;
   background: var(--strip);
-  padding: 2px 5px; }
-
-.content pre {
-  background: var(--strip);
-  border: 1px solid var(--rule-soft);
-  padding: 15px;
-  overflow-x: auto; }
-
-.content pre code {
-  background: none;
-  padding: 0; }
-
-.content hr {
-  border: 0;
-  border-top: 1px solid var(--rule-soft);
-  margin: 30px 0; }
+  padding: 2px 5px;
+}
+.content pre { background: var(--strip); border: 1px solid var(--rule-soft); padding: 15px; overflow-x: auto; }
+.content pre code { background: none; padding: 0; }
+.content hr { border: 0; border-top: 1px solid var(--rule-soft); margin: 30px 0; }
 
 .page-manager {
   margin-top: 44px;
   padding-top: 12px;
   border-top: 1px solid var(--rule-soft);
   font-size: 13px;
-  color: var(--ink-soft); }
-
-.page-manager .sep {
-  color: var(--rule);
-  margin: 0 8px; }
+  color: var(--ink-soft);
+}
+.page-manager .sep { color: var(--rule); margin: 0 8px; }
 
 /* --------------------------------------------------------------------------
    Footer
    -------------------------------------------------------------------------- */
-.site-footer {
-  background: var(--footer);
-  color: var(--paper);
-  padding: 40px 0 44px;
-  font-size: 13px; }
-
-.site-footer a {
-  color: var(--paper);
-  text-decoration: underline; }
-
-.site-footer a:hover {
-  color: var(--paper);
-  text-decoration: none; }
-
+.site-footer { background: var(--footer); color: var(--paper); padding: 44px 0 46px; font-size: 13px; }
+.site-footer a { color: var(--paper); text-decoration: underline; }
+.site-footer a:hover { color: var(--paper); text-decoration: none; }
 .site-footer h2 {
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 700;
   color: var(--paper);
-  margin: 0 0 8px; }
-
-.footer-top {
-  display: grid;
-  grid-template-columns: 1.1fr 1.2fr 1.2fr 1fr;
-  gap: 34px; }
-
-.footer-logo img {
-  width: 150px; }
-
-.footer-block p {
-  margin: 0 0 2px; }
-
-.footer-block ul {
-  list-style: disc;
-  margin: 0;
-  padding-left: 18px; }
-
-.footer-block li {
-  margin-bottom: 4px; }
-
-.footer-block .spaced {
-  margin-top: 18px; }
+  margin: 0 0 8px;
+}
+.footer-top { display: grid; grid-template-columns: 1.1fr 1.2fr 1.2fr 1fr; gap: 34px; }
+.footer-logo img { width: 170px; }
+.footer-block p { margin: 0 0 2px; }
+.footer-block ul { list-style: disc; margin: 0; padding-left: 18px; }
+.footer-block li { margin-bottom: 4px; }
+.footer-block .spaced { margin-top: 18px; }
 
 .footer-cols {
   display: grid;
@@ -697,8 +493,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   gap: 30px;
   margin-top: 40px;
   padding-top: 26px;
-  border-top: 1px solid rgba(255, 255, 255, 0.22); }
-
+  border-top: 1px solid rgba(255, 255, 255, .22);
+}
 .footer-col h3 {
   font-family: var(--sans);
   font-size: 11px;
@@ -706,100 +502,71 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   letter-spacing: .07em;
   text-transform: uppercase;
   color: var(--paper);
-  margin: 0 0 10px; }
+  margin: 0 0 10px;
+}
+.footer-col ul { list-style: none; margin: 0; padding: 0; }
+.footer-col li { margin-bottom: 5px; font-size: 12.5px; }
+.footer-col a { text-decoration: none; }
+.footer-col a:hover { text-decoration: underline; }
 
-.footer-col ul {
-  list-style: none;
-  margin: 0;
-  padding: 0; }
-
-.footer-col li {
-  margin-bottom: 5px;
-  font-size: 12.5px; }
-
-.footer-col a {
-  text-decoration: none; }
-
-.footer-col a:hover {
-  text-decoration: underline; }
-
-.to-top {
-  display: inline-block;
-  margin-top: 30px;
-  font-size: 13px;
-  text-decoration: none; }
-
-.to-top:hover {
-  text-decoration: underline; }
+.to-top { display: inline-block; margin-top: 30px; font-size: 13px; text-decoration: none; }
+.to-top:hover { text-decoration: underline; }
 
 /* --------------------------------------------------------------------------
    Small screens
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
-  .masthead .wrap {
-    flex-direction: column;
-    gap: 18px; }
-  .masthead-tools {
-    flex-wrap: wrap;
-    gap: 16px; }
-  .masthead-logo img {
-    width: 140px; }
-  .mainnav ul {
-    flex-direction: column; }
-  .mainnav > .wrap > ul > li > a {
-    padding: 11px 0;
-    border-bottom: 1px solid var(--rule-soft); }
-  .mainnav > .wrap > ul > li.is-current > a {
-    border-bottom-color: var(--bronze); }
-  .submenu {
-    display: flex;
-    position: static;
-    border: 0;
-    padding: 0 0 8px 16px;
-    min-width: 0; }
-  .submenu a {
-    padding: 6px 0; }
-  .hero-media img {
-    height: 240px; }
-  .hero-caption {
-    position: static;
-    max-width: none;
-    padding: 14px 20px;
-    background: var(--paper); }
-  .cards {
-    grid-template-columns: 1fr;
-    gap: 18px; }
-  .columns {
-    flex-direction: column;
-    gap: 22px; }
-  .sidebar {
-    flex: 1 1 auto;
-    width: 100%; }
-  .page-title {
-    font-size: 30px; }
-  .footer-top {
-    grid-template-columns: 1fr 1fr; }
-  .footer-cols {
-    grid-template-columns: repeat(2, 1fr); } }
+  .masthead .wrap { flex-direction: column; gap: 18px; }
+  .masthead-tools { flex-wrap: wrap; gap: 16px; }
+  .masthead-logo img { width: 150px; }
+
+  .mainnav > .wrap > ul { flex-direction: column; }
+  .mainnav > .wrap > ul > li > a { padding: 11px 0; border-bottom: 1px solid var(--rule-soft); }
+  .mainnav > .wrap > ul > li.is-current > a { border-bottom-color: var(--bronze); }
+  .submenu { display: flex; position: static; border: 0; box-shadow: none; background: transparent; padding: 0 0 8px 16px; min-width: 0; }
+  .submenu a { padding: 6px 0; }
+
+  .hero-media img { height: 260px; }
+  .hero-caption { position: static; max-width: none; padding: 0; gap: 0; }
+  .hero-caption h2 { padding: 14px 20px 4px; width: 100%; background: var(--paper); font-size: 21px; }
+  .hero-tag { padding: 0 20px 12px; width: 100%; }
+  .cards { grid-template-columns: 1fr; gap: 18px; }
+  .card-media img { height: 240px; }
+
+  .content .people-grid { grid-template-columns: repeat(2, 1fr); gap: 26px 28px; }
+  .person-head { gap: 18px; }
+  .person-portrait { flex-basis: 110px; width: 110px; height: 110px; }
+
+  .news-item { flex-direction: column; gap: 12px; }
+  .news-thumb, .news-thumb img { width: 100%; flex-basis: auto; }
+  .news-thumb img { height: 180px; }
+
+  .columns { flex-direction: column; gap: 22px; }
+  .sidebar { flex: 1 1 auto; width: 100%; }
+  .page-title { font-size: 30px; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-cols { grid-template-columns: repeat(2, 1fr); }
+}
 
 @media (max-width: 540px) {
-  .searchbox input {
-    flex: 1 1 auto;
-    width: auto; }
-  .footer-top {
-    grid-template-columns: 1fr; }
-  .footer-cols {
-    grid-template-columns: 1fr; } }
+  .content .people-grid { grid-template-columns: 1fr; gap: 22px; }
+  .person-head { flex-direction: column; }
+  .person-portrait { width: 120px; height: 120px; flex-basis: auto; }
+
+  .searchbox { width: 100%; }
+  .searchbox input { flex: 1 1 auto; width: auto; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-cols { grid-template-columns: 1fr; }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important; } }
-</style>
+  * { animation: none !important; transition: none !important; }
+}</style>
 </head><body id="top">
 
 <div class="utility"><div class="wrap">
-  <a href="#">Lund University</a><a href="#">LTH, Faculty of Engineering</a><a href="#">Computer Science</a>
+  <span class="spacer"></span>
+  <a class="listen" href="#main-content"><span class="listen-icon" aria-hidden="true">&#128266;</span>Listen</a>
 </div></div>
 <header class="masthead"><div class="wrap">
   <div class="masthead-id">
@@ -816,42 +583,64 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       onerror="this.onerror=null;this.src='./assets/img/lu-logo.svg';" alt="LTH, Faculty of Engineering"></span>
   </div>
 </div></header>
-<nav class="mainnav"><div class="wrap"><ul><li class=""><a href="#">Research</a></li><li class=""><a href="#">Education</a></li><li class=""><a href="#">Publications</a></li><li class=""><a href="#">People</a></li><li class="is-current"><a href="#">About</a></li></ul></div></nav>
+<nav class="mainnav"><div class="wrap"><ul>
+<li class="is-current"><a href="#">Research</a><ul class="submenu"><li><a href="#">Research Areas</a></li><li><a href="#">Projects</a></li><li><a href="#">Robotlab</a></li><li><a href="#">Demos and Videos</a></li></ul></li>
+<li class=""><a href="#">Education</a><ul class="submenu"><li><a href="#">Courses</a></li><li><a href="#">Thesis topics</a></li><li><a href="#">Available Master Thesis / Examination Projects</a></li></ul></li>
+<li class=""><a href="#">Publications</a></li><li class=""><a href="#">People</a></li><li class=""><a href="#">About</a></li>
+</ul></div></nav>
 <div class="wrap home">
   <div class="hero">
     <div class="slide is-active">
       <div class="hero-media">
-        <img src="./assets/img/slider/gift-wrapping-robot.svg" alt="A dual-arm YuMi robot wrapping a parcel">
-        <div class="hero-caption"><h2><a href="#">The gift wrapping robot<span class="chev">&#8250;</span></a></h2></div>
+        <img src="https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_wysiwyg_full_desktop/public/2025-09/csm_YuMi_fe2cad9a97.jpg.webp?itok=hWltql8P" alt="A dual-arm YuMi robot wrapping a parcel">
+        <div class="hero-caption">
+          <h2><a href="#">The gift wrapping robot</a></h2>
+          <p class="hero-tag">YuMi handling flexible materials.</p>
+        </div>
       </div>
-      <p class="hero-label">YuMi handling flexible materials.</p>
     </div>
-    <div class="slide ">
+    <div class="slide">
       <div class="hero-media">
-        <img src="./assets/img/slider/construction-site.svg" alt="A mobile robot surveying a construction site">
-        <div class="hero-caption"><h2><a href="#">Robots on the building site<span class="chev">&#8250;</span></a></h2></div>
+        <img src="https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_wysiwyg_full_desktop/public/2025-09/Center_for_Construction_Robotics_2_0.jpg.webp?itok=cB1c7Uyy" alt="A mobile robot surveying a construction site">
+        <div class="hero-caption">
+          <h2><a href="#">Robots on the building site</a></h2>
+          <p class="hero-tag">Autonomous surveying with Spot.</p>
+        </div>
       </div>
-      <p class="hero-label">Autonomous surveying with Spot.</p>
     </div>
-    <div class="slide ">
+    <div class="slide">
       <div class="hero-media">
         <img src="https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_infobox_desktop/public/2025-09/Robotlabbet%286%29-BW.jpg.webp?h=810b210d&amp;itok=yiLJRalg" alt="The Robotlab at the Department of Computer Science">
-        <div class="hero-caption"><h2><a href="#">Inside the Robotlab<span class="chev">&#8250;</span></a></h2></div>
+        <div class="hero-caption">
+          <h2><a href="#">Inside the Robotlab</a></h2>
+          <p class="hero-tag">Arms, mobile platforms and model cars.</p>
+        </div>
       </div>
-      <p class="hero-label">Arms, mobile platforms and model cars.</p>
-    </div></div>
+    </div>
+    <div class="slider-controls">
+      <button type="button" aria-label="Previous slide">&#9664;</button>
+      <button type="button" aria-label="Pause slideshow">&#10073;&#10073;</button>
+      <button type="button" aria-label="Next slide">&#9654;</button>
+    </div>
+  </div>
   <div class="intro"><p>We have openings for master students, PhD students and PostDocs.</p><a class="btn" href="#">Read more</a></div>
   <div class="cards">
-    <div class="card">
-      <h2><a href="#">Master Thesis Proposals<span class="chev">&#8250;</span></a></h2>
-      <p>Talk to us if you like our ideas or have one of your own.</p>
+    <div class="card card--media">
+      <div class="card-media"><img src="https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_original_ratio_full_width_desktop/public/2025-09/Boston-Dynamics-Spot-Robot-new.jpg.webp?itok=ZIWsWiYJ" alt="The SPOT robot in the Robotlab"></div>
+      <div class="card-body">
+        <h2><a href="#">Master Thesis Proposals<span class="chev">&#8250;</span></a></h2>
+        <p>Talk to us if you like our ideas or have one of your own.</p>
+      </div>
     </div>
-    <div class="card">
-      <h2><a href="#">Calendar<span class="chev">&#8250;</span></a></h2>
-      <div class="calendar-item"><p class="calendar-kind">Seminarium</p><h3>Ayesha Jena's Licentiate Seminar</h3><p>From: 2025-09-23 13:15 to 15:00</p></div><div class="calendar-item"><p class="calendar-kind">Disputation</p><h3>Momina Rizwan's PhD defence</h3><p>From: 2025-10-09 13:15 to 16:00</p></div><div class="calendar-item"><p class="calendar-kind">Disputation</p><h3>Faseeh Ahmad's PhD defence</h3><p>From: 2025-10-10 13:00 to 16:00</p></div>
-    </div></div>
+    <div class="card card--blue">
+      <div class="card-body">
+        <h2><a href="#">Calendar<span class="chev">&#8250;</span></a></h2>
+        <div class="calendar-item"><p class="calendar-kind">Seminarium</p><h3>Ayesha Jena's Licentiate Seminar</h3><p>From: 2025-09-23 13:15 to 15:00</p></div><div class="calendar-item"><p class="calendar-kind">Disputation</p><h3>Momina Rizwan's PhD defence</h3><p>From: 2025-10-09 13:15 to 16:00</p></div><div class="calendar-item"><p class="calendar-kind">Disputation</p><h3>Faseeh Ahmad's PhD defence</h3><p>From: 2025-10-10 13:00 to 16:00</p></div>
+      </div>
+    </div>
+  </div>
   <div class="section-head"><h2>News</h2><a href="#">All news</a></div>
-  <div class="newsfeed"><article class="news-item"><h2><a href="#">Welcome Stefan</a></h2><p class="news-date">2023-05-08</p><p>Welcome Dr. Stefan Reitmann! Stefan has joined the HRI group of RSS in mid-April this year (2023) and will be working as a postdoctoral researcher in a new project called AI-powered situational awareness for man-machine interaction. <a class="more" href="#">[more]</a></p></article><article class="news-item"><h2><a href="#">Welcome Ayesha</a></h2><p class="news-date">2022-05-10</p><p>Welcome Ayesha Jena! Ayesha has joined our group in mid-April 2022 as a new PhD student on the ELLIIT project Elin is running together with Patrick Doherty's group at Linköping University. <a class="more" href="#">[more]</a></p></article><article class="news-item"><h2><a href="#">svt.se: Robothunden Buster hjälper till på bygge</a></h2><p class="news-date">2022-01-03</p><p>"Buster", som fick sitt namn från en klass på Fäladsskolan i Lund, arbetar just nu på en byggarbetsplats i Lund. <a class="more" href="#">[more]</a></p></article></div>
+  <div class="newsfeed"><article class="news-item"><a class="news-thumb" href="#" tabindex="-1" aria-hidden="true"><img src="https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_wysiwyg_full_desktop/public/2025-09/robotlabbet4_opendoor.jpg.webp?itok=sNou2IqB" alt=""></a><div class="news-text"><h2><a href="#">Welcome Stefan</a></h2><p class="news-date">2023-05-08</p><p>Welcome Dr. Stefan Reitmann! Stefan has joined the HRI group of RSS in mid-April this year (2023) and will be working as a postdoctoral researcher in a new project called AI-powered situational awareness for man-machine interaction. <a class="more" href="#">[more]</a></p></div></article><article class="news-item"><a class="news-thumb" href="#" tabindex="-1" aria-hidden="true"><img src="https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_infobox_desktop/public/2025-09/RobotLabLTH_02.jpg.webp?h=810b210d&itok=0GraJUsc" alt=""></a><div class="news-text"><h2><a href="#">Welcome Ayesha</a></h2><p class="news-date">2022-05-10</p><p>Welcome Ayesha Jena! Ayesha has joined our group in mid-April 2022 as a new PhD student on the ELLIIT project Elin is running together with Patrick Doherty group at Linkoping University. <a class="more" href="#">[more]</a></p></div></article><article class="news-item"><a class="news-thumb" href="#" tabindex="-1" aria-hidden="true"><img src="https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_wysiwyg_full_desktop/public/2025-09/csm_Spot_robot_2ebf2268d8.jpeg.webp?itok=lgECtI3r" alt=""></a><div class="news-text"><h2><a href="#">svt.se: Robothunden Buster hjalper till pa bygge</a></h2><p class="news-date">2022-01-03</p><p>&quot;Buster&quot;, som fick sitt namn fran en klass pa Faladsskolan i Lund, arbetar just nu pa en byggarbetsplats i Lund. <a class="more" href="#">[more]</a></p></div></article></div>
 </div>
 
 <div class="wrap">
@@ -866,7 +655,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       <li><a href="#">Pierre Nugues</a>: +46 46-222 96 40</li>
       <li><a href="#">Volker Krueger</a>: +46-722 35 15 48</li></ul>
       <h2>Visiting and Delivery Address</h2>
-      <p>Department of Computer Science<br>Lund University<br>Ole Römers väg 3<br>SE-223 63 Lund, Sweden</p>
+      <p>Department of Computer Science<br>Lund University<br>Ole Romers vag 3<br>SE-223 63 Lund, Sweden</p>
       <p class="page-manager">Last updated: 2024-10-08</p>
     </main>
   </div>
@@ -878,7 +667,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
       onerror="this.onerror=null;this.src='./assets/img/lu-logo-negative.svg';" alt="Lund University and LTH"></div>
     <div class="footer-block"><h2>Contact us</h2>
       <p>Robotics and Semantic Systems</p><p>Dept. of Computer Science, Lund University</p>
-      <p>Visiting address: Ole Römers väg 3, Lund</p><p>Postal address: Box 118, 221 00 Lund</p>
+      <p>Visiting address: Ole Romers vag 3, Lund</p><p>Postal address: Box 118, 221 00 Lund</p>
       <p class="spaced"><a href="#">More contact information</a></p></div>
     <div class="footer-block"><h2>About the website</h2><ul>
       <li><a href="#">Accessibility statement</a></li><li><a href="#">Processing of personal data (lu.se)</a></li></ul></div>
@@ -888,4 +677,60 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   <div class="footer-cols"><div class="footer-col"><h3>Research group sites</h3><ul><li><a href="#">Algorithms</a></li><li><a href="#">Computer Graphics</a></li><li><a href="#">Embedded Systems Design</a></li><li><a href="#">Robotics and Semantic Systems</a></li><li><a href="#">Software Engineering Research Group</a></li><li><a href="#">Software Development and Environments</a></li></ul></div><div class="footer-col"><h3>Research area sites</h3><ul><li><a href="#">Artificial Intelligence</a></li><li><a href="#">Natural Language Processing</a></li><li><a href="#">Robotics and Automation Software</a></li></ul></div><div class="footer-col"><h3>Research project sites</h3><ul><li><a href="#">Digit@LTH</a></li><li><a href="#">ItACiH</a></li></ul></div><div class="footer-col"><h3>Software and community sites</h3><ul><li><a href="#">Digit@LTH</a></li><li><a href="#">JaCoP</a></li><li><a href="#">JastAdd</a></li><li><a href="#">PalCom</a></li><li><a href="#">Accessibility Statement</a></li></ul></div></div>
   <a class="to-top" href="#top">Back to top</a>
 </div></footer>
+
+<script>/* Main menu drop-downs.
+ *
+ * Mouse users get the plain CSS :hover behaviour, which can only ever show
+ * one submenu. This script covers keyboard and touch, where focus used to
+ * stick to a menu item and leave its submenu pinned open behind the next
+ * one. It guarantees that at most one submenu is open at a time:
+ *
+ * - moving focus into a top-level item opens its submenu and closes the rest
+ * - moving focus out of the menu, clicking elsewhere or pressing Escape
+ *   closes everything
+ */
+(function () {
+  var nav = document.querySelector('.mainnav');
+  if (!nav) return;
+
+  var items = Array.prototype.slice.call(nav.querySelectorAll(':scope > .wrap > ul > li'));
+
+  function closeAll(except) {
+    items.forEach(function (li) {
+      if (li !== except) li.classList.remove('is-open');
+    });
+  }
+
+  // Keyboard: opening follows focus, so tabbing through the menu never
+  // leaves an earlier submenu behind.
+  nav.addEventListener('focusin', function (event) {
+    var li = event.target.closest('.mainnav > .wrap > ul > li');
+    closeAll(li);
+    if (li && li.querySelector('.submenu')) li.classList.add('is-open');
+  });
+
+  // Pointer: hovering an item drops any submenu still pinned open by focus,
+  // so the hovered drop-down is the only one on screen.
+  items.forEach(function (li) {
+    li.addEventListener('pointerenter', function () {
+      closeAll(li);
+    });
+  });
+
+  nav.addEventListener('focusout', function (event) {
+    // Wait a tick so focus has settled on the next element.
+    window.setTimeout(function () {
+      if (!nav.contains(document.activeElement)) closeAll(null);
+    }, 0);
+  });
+
+  document.addEventListener('click', function (event) {
+    if (!nav.contains(event.target)) closeAll(null);
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeAll(null);
+  });
+})();
+</script>
 </body></html>

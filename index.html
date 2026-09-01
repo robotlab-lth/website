@@ -11,14 +11,14 @@ layout: default
         <div class="hero-caption">
           <h2>
             {%- if slide.url -%}
-            <a href="{{ slide.url | relative_url }}">{{ slide.title }}<span class="chev" aria-hidden="true">&#8250;</span></a>
+            <a href="{{ slide.url | relative_url }}">{{ slide.title }}</a>
             {%- else -%}
             {{ slide.title }}
             {%- endif -%}
           </h2>
+          <p class="hero-tag">{{ slide.text }}</p>
         </div>
       </div>
-      <p class="hero-label">{{ slide.text }}</p>
     </div>
     {%- endfor -%}
     <div class="slider-controls">
@@ -38,21 +38,30 @@ layout: default
 
   <div class="cards">
     {%- for promo in site.data.promos offset: 1 -%}
-    <div class="card">
-      <h2><a href="{{ promo.url | relative_url }}">{{ promo.title }}<span class="chev" aria-hidden="true">&#8250;</span></a></h2>
-      {%- if promo.text and promo.text != "" %}<p>{{ promo.text }}</p>{% endif -%}
+    <div class="card{% if promo.image %} card--media{% endif %}">
+      {%- if promo.image -%}
+      <div class="card-media">
+        <img src="{{ promo.image }}" alt="{{ promo.image_alt | default: promo.title }}">
+      </div>
+      {%- endif -%}
+      <div class="card-body">
+        <h2><a href="{{ promo.url | relative_url }}">{{ promo.title }}<span class="chev" aria-hidden="true">&#8250;</span></a></h2>
+        {%- if promo.text and promo.text != "" %}<p>{{ promo.text }}</p>{% endif -%}
+      </div>
     </div>
     {%- endfor -%}
 
-    <div class="card">
-      <h2><a href="{{ '/news/' | relative_url }}">Calendar<span class="chev" aria-hidden="true">&#8250;</span></a></h2>
-      {%- for event in site.data.calendar -%}
-      <div class="calendar-item">
-        <p class="calendar-kind">{{ event.kind }}</p>
-        <h3>{{ event.title }}</h3>
-        <p>From: {{ event.from }} to {{ event.to }}</p>
+    <div class="card card--blue">
+      <div class="card-body">
+        <h2><a href="{{ '/news/' | relative_url }}">Calendar<span class="chev" aria-hidden="true">&#8250;</span></a></h2>
+        {%- for event in site.data.calendar -%}
+        <div class="calendar-item">
+          <p class="calendar-kind">{{ event.kind }}</p>
+          <h3>{{ event.title }}</h3>
+          <p>From: {{ event.from }} to {{ event.to }}</p>
+        </div>
+        {%- endfor -%}
       </div>
-      {%- endfor -%}
     </div>
   </div>
 

@@ -1,14 +1,12 @@
-# Front page slideshow. Drop images in assets/img/slider/ and add an entry.
-# Slides without a photograph of their own use a placeholder in the Lund
-# University profile colours; the Robotlab slide reuses a photograph from
-# www.robotics.lth.se (see _data/images.yml).
-- image: /assets/img/slider/gift-wrapping-robot.svg
+# Front page slideshow. Slide photographs are reused from www.robotics.lth.se
+# (see _data/images.yml for the full list), so every image URL is valid.
+- image: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_wysiwyg_full_desktop/public/2025-09/csm_YuMi_fe2cad9a97.jpg.webp?itok=hWltql8P"
   alt: A dual-arm YuMi robot wrapping a parcel
   title: The gift wrapping robot
   text: YuMi handling flexible materials.
   url: /research/robotlab/
 
-- image: /assets/img/slider/construction-site.svg
+- image: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_wysiwyg_full_desktop/public/2025-09/Center_for_Construction_Robotics_2_0.jpg.webp?itok=cB1c7Uyy"
   alt: A mobile robot surveying a construction site
   title: Robots on the building site
   text: Autonomous surveying with Spot.

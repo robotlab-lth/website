@@ -73,7 +73,8 @@ Sub-pages appear indented under their parent when that section is open.
 ## Add yourself to People
 
 Copy `templates/person.md` to `_people/your-name.md`. Keep `hidden: true` — the
-People page builds its table from these files, so you are listed there and get
+People page builds its member grid from these files, so you are listed there
+(photo, role and a short description, truncated if long) and get
 your own page, without crowding the menu.
 
 ## Change the front page

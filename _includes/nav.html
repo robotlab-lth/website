@@ -7,8 +7,8 @@
     <ul>
       {%- for entry in site.data.nav -%}
         {%- assign docs = site[entry.collection] | sort: 'order' -%}
-        {%- assign landing = docs | first -%}
         {%- assign tops = docs | where_exp: "d", "d.parent == nil" | where_exp: "d", "d.hidden != true" -%}
+        {%- assign landing = tops | first -%}
         {%- if landing -%}
         <li class="{% if page.collection == entry.collection %}is-current{% endif %}">
           <a href="{{ landing.url | relative_url }}">{{ entry.label }}</a>

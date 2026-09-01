@@ -1,8 +1,20 @@
+{%- comment -%}
+  News list entry with a thumbnail. Every post gets an image: posts without
+  an `image` in their front matter fall back to the Robotlab photograph from
+  _data/images.yml, so no entry ever appears without one.
+{%- endcomment -%}
+{%- assign news_image = include.item.image | default: site.data.images.robotlab_photo -%}
+{%- assign news_image_alt = include.item.image_alt | default: include.item.title -%}
 <article class="news-item">
-  <h2><a href="{{ include.item.url | relative_url }}">{{ include.item.title }}</a></h2>
-  <p class="news-date">{{ include.item.date | date: "%Y-%m-%d" }}</p>
-  <p>
-    {{ include.item.excerpt | strip_html | strip_newlines | truncate: 260 }}
-    <a class="more" href="{{ include.item.url | relative_url }}">[more]</a>
-  </p>
+  <a class="news-thumb" href="{{ include.item.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ news_image }}" alt="" loading="lazy">
+  </a>
+  <div class="news-text">
+    <h2><a href="{{ include.item.url | relative_url }}">{{ include.item.title }}</a></h2>
+    <p class="news-date">{{ include.item.date | date: "%Y-%m-%d" }}</p>
+    <p>
+      {{ include.item.excerpt | strip_html | strip_newlines | truncate: 260 }}
+      <a class="more" href="{{ include.item.url | relative_url }}">[more]</a>
+    </p>
+  </div>
 </article>

@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<div class="wrap">
+  {% include breadcrumb.html %}
+  <div class="columns">
+    {% include sidebar.html %}
+    <main class="content" id="main-content">
+      <div class="person-head">
+        <img class="person-portrait"
+             src="{{ page.photo | default: '/assets/img/avatar.svg' | relative_url }}"
+             alt="{% if page.photo %}Portrait of {{ page.title }}{% endif %}">
+        <div class="person-head-text">
+          <h1 class="page-title">{{ page.title }}</h1>
+          {%- if page.role %}<p class="person-role">{{ page.role }}</p>{% endif -%}
+          <ul class="person-contact">
+            {%- if page.email %}<li><a href="mailto:{{ page.email }}">{{ page.email }}</a></li>{% endif -%}
+            {%- if page.phone %}<li>{{ page.phone }}</li>{% endif -%}
+            {%- if page.portal %}<li><a href="{{ page.portal }}">Profile in the Lund University Research Portal</a></li>{% endif -%}
+          </ul>
+          {%- if page.affiliations -%}
+          <ul class="person-affiliations">
+            {%- for aff in page.affiliations %}<li>{{ aff }}</li>{% endfor -%}
+          </ul>
+          {%- endif -%}
+        </div>
+      </div>
+      {{ content }}
+      <p><a href="{{ '/people/' | relative_url }}">All people</a></p>
+      {% include page-manager.html %}
+    </main>
+  </div>
+</div>

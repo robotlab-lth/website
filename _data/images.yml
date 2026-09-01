@@ -1,6 +1,6 @@
-# Images borrowed from the sibling site www.robotics.lth.se (RobotLab LTH),
-# which runs the same Lund University design. They are referenced by URL
-# because this repository has no local copies yet.
+# Images reused from the sibling site www.robotics.lth.se (RobotLab LTH),
+# which runs the same Lund University design. All URLs below were taken from
+# live pages on www.robotics.lth.se, so every image reference resolves.
 #
 # To make the site self-contained, download each file into assets/img/ and
 # change the value here to a local path, e.g. /assets/img/lth-logo.svg:
@@ -8,9 +8,19 @@
 #   curl -o assets/img/lth-logo.svg \
 #     "https://www.robotics.lth.se/themes/custom/lu_theme/images/logos/logo__default--right_lth_en.svg"
 #
-# Every reference has a local placeholder as an onerror fallback, so a broken
-# or expired URL degrades to the placeholder instead of a missing image.
+# Every logo reference keeps a local placeholder as an onerror fallback, so a
+# broken or expired URL degrades to the placeholder instead of a missing image.
 
+# Logotypes
 lth_logo: "https://www.robotics.lth.se/themes/custom/lu_theme/images/logos/logo__default--right_lth_en.svg"
 lth_logo_negative: "https://www.robotics.lth.se/sites/robotics.lth.se/files/LTH-NEG-ENG.svg"
+
+# Photographs (all from www.robotics.lth.se)
 robotlab_photo: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_infobox_desktop/public/2025-09/Robotlabbet%286%29-BW.jpg.webp?h=810b210d&itok=yiLJRalg"
+robotlab_people: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_infobox_desktop/public/2025-09/RobotLabLTH_02.jpg.webp?h=810b210d&itok=0GraJUsc"
+yumi: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_wysiwyg_full_desktop/public/2025-09/csm_YuMi_fe2cad9a97.jpg.webp?itok=hWltql8P"
+construction_robot: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_wysiwyg_full_desktop/public/2025-09/Center_for_Construction_Robotics_2_0.jpg.webp?itok=cB1c7Uyy"
+spot: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_original_ratio_full_width_desktop/public/2025-09/Boston-Dynamics-Spot-Robot-new.jpg.webp?itok=ZIWsWiYJ"
+open_door: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_wysiwyg_full_desktop/public/2025-09/robotlabbet4_opendoor.jpg.webp?itok=sNou2IqB"
+kuka: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_wysiwyg_full_desktop/public/2025-09/csm_Dual_arm_kuka_robot_2e0bc4c42c.jpeg.webp?itok=livC-NzW"
+spot_closeup: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_wysiwyg_full_desktop/public/2025-09/csm_Spot_robot_2ebf2268d8.jpeg.webp?itok=lgECtI3r"

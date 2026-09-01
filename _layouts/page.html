@@ -5,7 +5,7 @@ layout: default
   {% include breadcrumb.html %}
   <div class="columns">
     {% include sidebar.html %}
-    <main class="content" id="main-content">
+    <main class="content{% if page.wide %} content--wide{% endif %}" id="main-content">
       <h1 class="page-title">{{ page.title }}</h1>
       {{ content }}
       {% include page-manager.html %}

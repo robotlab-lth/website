@@ -73,7 +73,7 @@ defaults:
   - scope: { path: "", type: "publications" }
     values: { layout: "page", category_name: "Publications" }
   - scope: { path: "", type: "people" }
-    values: { layout: "page", category_name: "People" }
+    values: { layout: "person", category_name: "People", hidden: true }
   - scope: { path: "", type: "about" }
     values: { layout: "page", category_name: "About" }
 

@@ -1,3 +1,6 @@
+# Front page promos. Text is unchanged; the `image` field only adds a
+# photograph (reused from www.robotics.lth.se) to the card, in the style of
+# the RobotLab LTH front page.
 - title: We have openings for master students, PhD students and PostDocs.
   text: ""
   url: /education/thesis-topics/
@@ -5,3 +8,5 @@
 - title: Master Thesis Proposals
   text: Talk to us if you like our ideas or have one of your own.
   url: /education/available-master-thesis/
+  image: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_original_ratio_full_width_desktop/public/2025-09/Boston-Dynamics-Spot-Robot-new.jpg.webp?itok=ZIWsWiYJ"
+  image_alt: The SPOT robot in the Robotlab

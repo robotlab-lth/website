@@ -1,0 +1,71 @@
+title: Robotics and Semantic Systems
+tagline: Computer Science | LTH | Lund University
+description: >-
+  Research group in robotics, artificial intelligence and natural language
+  processing at the Department of Computer Science, Lund University.
+email: expedition@cs.lth.se
+
+# ---------------------------------------------------------------------------
+# URL settings
+#
+# User/organisation site (https://<user>.github.io):
+#     url: "https://<user>.github.io"
+#     baseurl: ""
+#
+# Project site (https://<user>.github.io/<repo>):
+#     url: "https://<user>.github.io"
+#     baseurl: "/<repo>"
+# ---------------------------------------------------------------------------
+url: ""
+baseurl: ""
+
+# News on the front page
+paginate: 5
+paginate_path: "/news/page:num/"
+permalink: /news/:year/:month/:day/:title/
+
+# Every top menu item is a collection. Add a .md file to the matching folder
+# and a new page appears in that category and in its left-hand menu.
+collections:
+  research:
+    output: true
+    permalink: /research/:name/
+  education:
+    output: true
+    permalink: /education/:name/
+  publications:
+    output: true
+    permalink: /publications/:name/
+  people:
+    output: true
+    permalink: /people/:name/
+  about:
+    output: true
+    permalink: /about/:name/
+
+defaults:
+  - scope: { path: "", type: "posts" }
+    values: { layout: "post" }
+  - scope: { path: "", type: "research" }
+    values: { layout: "page", category_name: "Research" }
+  - scope: { path: "", type: "education" }
+    values: { layout: "page", category_name: "Education" }
+  - scope: { path: "", type: "publications" }
+    values: { layout: "page", category_name: "Publications" }
+  - scope: { path: "", type: "people" }
+    values: { layout: "page", category_name: "People" }
+  - scope: { path: "", type: "about" }
+    values: { layout: "page", category_name: "About" }
+
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CONTRIBUTING.md
+  - templates
+  - vendor

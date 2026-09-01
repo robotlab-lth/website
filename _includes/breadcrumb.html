@@ -1,0 +1,11 @@
+{%- assign docs = site[page.collection] | sort: 'order' -%}
+{%- assign landing = docs | first -%}
+<div class="breadcrumb">
+  <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  {%- if page.category_name %} &gt; <a href="{{ landing.url | relative_url }}">{{ page.category_name }}</a>{%- endif -%}
+  {%- if page.parent -%}
+    {%- assign parent_doc = docs | where: 'slug', page.parent | first -%}
+    {%- if parent_doc %} &gt; <a href="{{ parent_doc.url | relative_url }}">{{ parent_doc.title }}</a>{%- endif -%}
+  {%- endif %}
+  &gt; {{ page.title }}
+</div>

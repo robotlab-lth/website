@@ -1,0 +1,27 @@
+- heading: Research group sites
+  links:
+    - { label: Algorithms, url: "https://cs.lth.se/algorithms/" }
+    - { label: Computer Graphics, url: "https://cs.lth.se/computer-graphics/" }
+    - { label: Embedded Systems Design, url: "https://cs.lth.se/esd/" }
+    - { label: Robotics and Semantic Systems, url: "/" }
+    - { label: Software Engineering Research Group, url: "https://serg.cs.lth.se/" }
+    - { label: Software Development and Environments, url: "https://cs.lth.se/sde/" }
+
+- heading: Research area sites
+  links:
+    - { label: Artificial Intelligence, url: "/research/research-areas/" }
+    - { label: Natural Language Processing, url: "/research/research-areas/" }
+    - { label: Robotics and Automation Software, url: "/research/research-areas/" }
+
+- heading: Research project sites
+  links:
+    - { label: "Digit@LTH", url: "https://digit.lth.se/" }
+    - { label: ItACiH, url: "/research/projects/" }
+
+- heading: Software and community sites
+  links:
+    - { label: "Digit@LTH", url: "https://digit.lth.se/" }
+    - { label: JaCoP, url: "https://github.com/radsz/jacop" }
+    - { label: JastAdd, url: "https://jastadd.cs.lth.se/" }
+    - { label: PalCom, url: "https://cs.lth.se/palcom/" }
+    - { label: Accessibility Statement, url: "/about/" }

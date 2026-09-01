@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 128" role="img" aria-label="Lund University">
+  <!-- Placeholder mark. Replace this file with the official Lund University
+       logo from the LU brand portal before publishing. -->
+  <circle cx="60" cy="42" r="34" fill="none" stroke="#24326b" stroke-width="1.5"/>
+  <circle cx="60" cy="42" r="29" fill="none" stroke="#24326b" stroke-width="0.8"/>
+  <text x="60" y="47" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#24326b">SIGILLUM</text>
+  <text x="60" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="21" fill="#24326b">LUND</text>
+  <text x="60" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="13" letter-spacing="1.5" fill="#24326b">UNIVERSITY</text>
+</svg>

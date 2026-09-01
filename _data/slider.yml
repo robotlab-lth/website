@@ -1,0 +1,18 @@
+# Front page slideshow. Drop images in assets/img/slider/ and add an entry.
+- image: /assets/img/slider/gift-wrapping-robot.svg
+  alt: A dual-arm YuMi robot wrapping a parcel
+  title: The gift wrapping robot
+  text: YuMi handling flexible materials.
+  url: /research/robotlab/
+
+- image: /assets/img/slider/construction-site.svg
+  alt: A mobile robot surveying a construction site
+  title: Robots on the building site
+  text: Autonomous surveying with Spot.
+  url: /research/projects-construction-robotics/
+
+- image: /assets/img/slider/robotlab.svg
+  alt: The Robotlab at the Department of Computer Science
+  title: Inside the Robotlab
+  text: Arms, mobile platforms and model cars.
+  url: /research/robotlab/

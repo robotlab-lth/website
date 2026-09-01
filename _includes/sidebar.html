@@ -1,0 +1,30 @@
+{%- comment -%}
+  Left menu, built from the collection itself.
+  Front matter used:  order (position), slug (id for children),
+  parent (slug of the parent page), hidden: true (leave out of the menu).
+{%- endcomment -%}
+{%- assign docs = site[page.collection] | sort: 'order' -%}
+{%- assign tops = docs | where_exp: "d", "d.parent == nil" | where_exp: "d", "d.hidden != true" -%}
+{%- if tops.size > 1 -%}
+<nav class="sidebar" aria-label="{{ page.category_name }} menu">
+  <ul>
+    {%- for item in tops -%}
+      {%- assign kids = docs | where: 'parent', item.slug | where_exp: "d", "d.hidden != true" -%}
+      {%- assign open = false -%}
+      {%- if item.slug and page.parent == item.slug %}{% assign open = true %}{% endif -%}
+      <li class="{% if page.url == item.url %}is-current{% elsif open %}is-open{% endif %}">
+        <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        {%- if kids.size > 0 and (page.url == item.url or open) -%}
+        <ul class="sub">
+          {%- for kid in kids -%}
+          <li class="{% if page.url == kid.url %}is-current{% endif %}">
+            <a href="{{ kid.url | relative_url }}">{{ kid.title }}</a>
+          </li>
+          {%- endfor -%}
+        </ul>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+{%- endif -%}

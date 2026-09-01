@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<div class="pagebody">
+  <div class="wrap">
+    {% include breadcrumb.html %}
+    <div class="columns">
+      {% include sidebar.html %}
+      <main class="content">
+        <div class="content-inner">
+          <h1 class="page-title">{{ page.title }}</h1>
+          {{ content }}
+          {% include page-manager.html %}
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

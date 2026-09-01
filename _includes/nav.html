@@ -1,0 +1,25 @@
+{%- comment -%}
+  Top menu. Each entry points at the first page of its collection,
+  so adding pages never requires editing this file.
+{%- endcomment -%}
+<nav class="mainnav" aria-label="Main">
+  <div class="wrap">
+    <ul>
+      {%- for entry in site.data.nav -%}
+        {%- assign docs = site[entry.collection] | sort: 'order' -%}
+        {%- assign landing = docs | first -%}
+        {%- if landing -%}
+        <li class="{% if page.collection == entry.collection %}is-current{% endif %}">
+          <a href="{{ landing.url | relative_url }}">{{ entry.label }}</a>
+        </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+    <form class="searchbox" action="https://www.google.com/search" method="get" role="search">
+      <input type="hidden" name="as_sitesearch" value="lth.se">
+      <label class="visually-hidden" for="q" hidden>Search</label>
+      <input id="q" type="text" name="q" placeholder="Search lth.se">
+      <button type="submit">SEARCH</button>
+    </form>
+  </div>
+</nav>

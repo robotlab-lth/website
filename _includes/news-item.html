@@ -1,0 +1,8 @@
+<article class="news-item">
+  <h2><a href="{{ include.item.url | relative_url }}">{{ include.item.title }}</a></h2>
+  <p class="news-date">{{ include.item.date | date: "%Y-%m-%d" }}</p>
+  <p>
+    {{ include.item.excerpt | strip_html | strip_newlines | truncate: 260 }}
+    <a class="more" href="{{ include.item.url | relative_url }}">[more]</a>
+  </p>
+</article>

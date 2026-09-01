@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" role="img" aria-label="Inside the Robotlab">
+  <rect width="1200" height="660" fill="#5a4a6b"/>
+  <rect x="0" y="0" width="1200" height="660" fill="none" stroke="#00000022" stroke-width="2"/>
+  <text x="600" y="330" text-anchor="middle" font-family="Georgia, serif" font-size="36" fill="#ffffffcc">Inside the Robotlab</text>
+  <text x="600" y="372" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#ffffff99">Replace with a photo at assets/img/slider/</text>
+</svg>

@@ -1,0 +1,31 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      {%- for col in site.data.footer -%}
+      <div class="footer-col">
+        <h2>{{ col.heading }}</h2>
+        <ul>
+          {%- for link in col.links -%}
+          <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="footer-contact">
+      <img src="{{ '/assets/img/lu-logo.svg' | relative_url }}" alt="Lund University">
+      <div class="footer-address">
+        <p>Dept. of Computer Science, Lund University</p>
+        <p>Box 118, SE-221 00 LUND</p>
+        <p>Telefon: +46 46-222 00 00</p>
+        <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+        <p class="links">
+          <a href="{{ '/about/' | relative_url }}">About the website</a>
+          <span class="sep">|</span>
+          <a href="https://github.com/">Edit on GitHub</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,11 @@
+# Top menu. Each item links to the first page (lowest `order`) of its collection.
+- label: Research
+  collection: research
+- label: Education
+  collection: education
+- label: Publications
+  collection: publications
+- label: People
+  collection: people
+- label: About
+  collection: about

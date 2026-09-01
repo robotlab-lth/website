@@ -22,6 +22,9 @@ bundle exec jekyll serve --livereload
 # http://127.0.0.1:4000
 ```
 
+Commit the `Gemfile.lock` that `bundle install` produces, so the workflow and
+your machine build with the same gem versions.
+
 ## Where things live
 
 | Path | What it holds |
@@ -39,6 +42,8 @@ bundle exec jekyll serve --livereload
 | `_data/nav.yml` | Order of the top menu. |
 | `templates/` | Files to copy when adding content. Not published. |
 | `assets/img/` | Images. Replace the placeholder logo and slides here. |
+| `assets/css/style.scss` | The whole stylesheet. Jekyll compiles it to `/assets/css/style.css`. |
+| `_layouts/`, `_includes/` | The page structure. |
 
 ## How the menus work
 
@@ -57,6 +62,34 @@ Front matter that controls placement:
 | `hidden` | `true` publishes the page but keeps it out of the menu. |
 | `updated` | Date shown in the "Page Manager" line at the foot of the page. |
 | `page_manager` | Optional name shown next to that date. |
+
+## About the theme
+
+The repository is its own theme. `_layouts`, `_includes` and
+`assets/css/style.scss` supply the entire design, which is why `_config.yml`
+has no `theme:` line — none of GitHub's supported themes is loaded, and nothing
+is inherited that could change under you.
+
+The file locations follow the conventions GitHub documents for customising a
+theme, so switching later is additive rather than a rewrite:
+
+- `_layouts/default.html` is the override point for a theme's default layout.
+- `assets/css/style.scss` carries empty front matter, so adding
+  `@import "{{ site.theme }}";` on the first line after it layers this
+  stylesheet on top of a theme's.
+
+To adopt one, add `theme: jekyll-theme-minimal` (supported themes) or
+`remote_theme: owner/repository` plus the `jekyll-remote-theme` plugin. Local
+files always take precedence over the theme's versions.
+
+## Publishing source
+
+The workflow deploys with GitHub Actions, which is what GitHub now recommends.
+The site also builds under the older **Deploy from a branch** setting: the three
+plugins it uses — `jekyll-paginate`, `jekyll-feed`, `jekyll-seo-tag` — are all on
+the GitHub Pages allow-list, and the stylesheet avoids Sass that the older
+builder cannot compile. See the `Gemfile` for how to reproduce that build
+locally.
 
 ## Placeholders to replace
 

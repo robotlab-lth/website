@@ -19,6 +19,26 @@ email: expedition@cs.lth.se
 url: ""
 baseurl: ""
 
+# ---------------------------------------------------------------------------
+# Theme
+#
+# This repository is its own theme: _layouts, _includes and
+# assets/css/style.scss define the whole design, so no `theme:` line is needed
+# and none of the supported themes is loaded.
+#
+# To adopt a theme later:
+#   supported theme  ->  theme: jekyll-theme-minimal
+#   any GitHub theme ->  remote_theme: owner/repository
+#                        (also add jekyll-remote-theme to `plugins` and the
+#                         Gemfile, and set Pages to build with Actions)
+# Files in _layouts, _includes and assets always win over the theme's own
+# versions, so the design here survives either switch.
+# ---------------------------------------------------------------------------
+
+# Stylesheet: assets/css/style.scss is compiled to /assets/css/style.css
+sass:
+  style: expanded
+
 # News on the front page
 paginate: 5
 paginate_path: "/news/page:num/"
@@ -57,10 +77,13 @@ defaults:
   - scope: { path: "", type: "about" }
     values: { layout: "page", category_name: "About" }
 
+# All three are on the GitHub Pages allow-list, so the site builds whether you
+# deploy with Actions or with "Deploy from a branch".
 plugins:
   - jekyll-paginate
   - jekyll-feed
   - jekyll-seo-tag
+  # - jekyll-remote-theme   # only needed if you set remote_theme above
 
 exclude:
   - Gemfile

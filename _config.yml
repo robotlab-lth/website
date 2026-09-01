@@ -91,4 +91,5 @@ exclude:
   - README.md
   - CONTRIBUTING.md
   - templates
+  - preview.html
   - vendor

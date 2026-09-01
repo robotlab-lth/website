@@ -1,5 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="Robots on the building site">
-  <rect width="1200" height="560" fill="#b9d3dc"/>
-  <text x="600" y="288" text-anchor="middle" font-family="Garamond, Georgia, serif" font-size="40" fill="#9c6114">Robots on the building site</text>
-  <text x="600" y="330" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#4d4c44">Placeholder — add a photograph in assets/img/slider/</text>
+  <defs>
+    <pattern id="harlequin-construction-site" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="80" height="80" fill="#eae7df"/>
+      <rect width="40" height="40" fill="#ece9e1"/>
+      <rect x="40" y="40" width="40" height="40" fill="#ece9e1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="560" fill="url(#harlequin-construction-site)"/>
+  <rect x="0" y="368" width="1200" height="192" fill="#ffffff" opacity="0.88"/>
+  <text x="60" y="424" font-family="Garamond, Georgia, serif" font-size="34" fill="#1d1d1b">Robots on the building site</text>
+  <text x="60" y="460" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#4d4c44">Placeholder — replace with a photograph in assets/img/slider/</text>
 </svg>

@@ -1,6 +1,8 @@
 <p class="page-manager">
-  Page Manager:
-  {%- if page.page_manager %} <a href="mailto:{{ page.page_manager_email | default: site.email }}">{{ page.page_manager }}</a>{% endif %}
-  <span class="sep">|</span>
-  {{ page.updated | default: site.time | date: "%Y-%m-%d" }}
+  {%- if page.page_manager -%}
+  Page Manager: <a href="mailto:{{ page.page_manager_email | default: site.email }}">{{ page.page_manager }}</a>
+  <span class="sep">|</span> {{ page.updated | default: site.time | date: "%Y-%m-%d" }}
+  {%- else -%}
+  Last updated: {{ page.updated | default: site.time | date: "%Y-%m-%d" }}
+  {%- endif -%}
 </p>

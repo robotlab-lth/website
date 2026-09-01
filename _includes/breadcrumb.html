@@ -2,10 +2,18 @@
 {%- assign landing = docs | first -%}
 <div class="breadcrumb">
   <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-  {%- if page.category_name %} &gt; <a href="{{ landing.url | relative_url }}">{{ page.category_name }}</a>{%- endif -%}
-  {%- if page.parent -%}
-    {%- assign parent_doc = docs | where: 'slug', page.parent | first -%}
-    {%- if parent_doc %} &gt; <a href="{{ parent_doc.url | relative_url }}">{{ parent_doc.title }}</a>{%- endif -%}
-  {%- endif %}
-  &gt; {{ page.title }}
+  {%- if page.category_name -%}
+    {%- if landing.url == page.url -%}
+      &gt; {{ page.category_name }}
+    {%- else -%}
+      &gt; <a href="{{ landing.url | relative_url }}">{{ page.category_name }}</a>
+      {%- if page.parent -%}
+        {%- assign parent_doc = docs | where: 'slug', page.parent | first -%}
+        {%- if parent_doc %} &gt; <a href="{{ parent_doc.url | relative_url }}">{{ parent_doc.title }}</a>{% endif -%}
+      {%- endif -%}
+      &gt; {{ page.title }}
+    {%- endif -%}
+  {%- else -%}
+    &gt; {{ page.title }}
+  {%- endif -%}
 </div>

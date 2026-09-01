@@ -14,6 +14,23 @@ For a project site (`https://<user>.github.io/<repo>`), the workflow passes the
 base path automatically. If you serve the site from a custom domain, add a
 `CNAME` file and set `url` in `_config.yml`.
 
+## See the theme without building
+
+Open `preview.html` in a browser. It is a static, self-contained render of the
+front page and one inner page with the compiled stylesheet inlined — useful for
+checking the design without installing Ruby. It is excluded from the build and
+is not part of the site.
+
+## If the site renders with the old brown design
+
+That means an old compiled stylesheet is being served. Delete `_site/`, delete
+any leftover `assets/css/style.css` from an earlier version of this repository,
+and rebuild. Unzip a new version into an empty folder rather than over an old
+one. The stylesheet is now `assets/css/rss-theme.scss`, which compiles to
+`/assets/css/rss-theme.css` and is requested with a version query string, so a
+stale `style.css` can no longer take its place and browser caching cannot serve
+yesterday's CSS.
+
 ## Run it locally
 
 ```bash
@@ -43,7 +60,7 @@ your machine build with the same gem versions.
 | `_data/images.yml` | Logotype and photo URLs reused from www.robotics.lth.se. |
 | `templates/` | Files to copy when adding content. Not published. |
 | `assets/img/` | Images. Replace the placeholder logo and slides here. |
-| `assets/css/style.scss` | The whole stylesheet. Jekyll compiles it to `/assets/css/style.css`. |
+| `assets/css/rss-theme.scss` | The whole stylesheet. Jekyll compiles it to `/assets/css/rss-theme.css`. |
 | `_layouts/`, `_includes/` | The page structure. |
 
 ## How the menus work
@@ -110,9 +127,11 @@ The file locations follow the conventions GitHub documents for customising a
 theme, so switching later is additive rather than a rewrite:
 
 - `_layouts/default.html` is the override point for a theme's default layout.
-- `assets/css/style.scss` carries empty front matter, so adding
+- `assets/css/rss-theme.scss` carries empty front matter, so adding
   `@import "{{ site.theme }}";` on the first line after it layers this
-  stylesheet on top of a theme's.
+  stylesheet on top of a theme's. (GitHub's documentation names this file
+  `style.scss`; it is renamed here so that a stale `style.css` from an earlier
+  version of this repository cannot claim the same output URL.)
 
 To adopt one, add `theme: jekyll-theme-minimal` (supported themes) or
 `remote_theme: owner/repository` plus the `jekyll-remote-theme` plugin. Local

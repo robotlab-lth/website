@@ -1,9 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 128" role="img" aria-label="Lund University">
-  <!-- Placeholder mark. Replace this file with the official Lund University
-       logo from the LU brand portal before publishing. -->
-  <circle cx="60" cy="42" r="34" fill="none" stroke="#24326b" stroke-width="1.5"/>
-  <circle cx="60" cy="42" r="29" fill="none" stroke="#24326b" stroke-width="0.8"/>
-  <text x="60" y="47" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#24326b">SIGILLUM</text>
-  <text x="60" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="21" fill="#24326b">LUND</text>
-  <text x="60" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="13" letter-spacing="1.5" fill="#24326b">UNIVERSITY</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 96" role="img" aria-label="Lund University, LTH Faculty of Engineering">
+  <!-- Fallback used only if the LTH logotype in _data/images.yml cannot load.
+       Replace with the official logotype from LU's Image and Media Bank. -->
+  <circle cx="44" cy="48" r="30" fill="none" stroke="#000080" stroke-width="1.6"/>
+  <circle cx="44" cy="48" r="25" fill="none" stroke="#000080" stroke-width="0.8"/>
+  <text x="92" y="42" font-family="Garamond, Georgia, serif" font-size="27" fill="#000080">LUND UNIVERSITY</text>
+  <text x="92" y="70" font-family="Helvetica, Arial, sans-serif" font-size="15" letter-spacing="1" fill="#000080">LTH | FACULTY OF ENGINEERING</text>
 </svg>

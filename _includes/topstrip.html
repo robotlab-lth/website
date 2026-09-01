@@ -1,7 +1,13 @@
-<div class="topstrip">
+{%- comment -%}
+  Utility bar, as on www.robotics.lth.se: parent-organisation links first,
+  site tools on the right.
+{%- endcomment -%}
+<div class="utility">
   <div class="wrap">
-    <a href="https://www.lth.se/">LTH</a>
-    <span class="sep">|</span>
-    <a href="https://www.cs.lth.se/">COMPUTER SCIENCE</a>
+    <a href="https://www.lu.se/">Lund University</a>
+    <a href="https://www.lth.se/">LTH, Faculty of Engineering</a>
+    <a href="https://www.cs.lth.se/">Computer Science</a>
+    <span class="spacer"></span>
+    <a href="{{ '/news/' | relative_url }}">News</a>
   </div>
 </div>

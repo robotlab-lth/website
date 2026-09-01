@@ -1,72 +1,74 @@
 ---
 layout: default
 ---
-<div class="pagebody">
-  <div class="wrap home">
-    <div class="home-top">
+<div class="wrap" id="main-content">
 
-      <div class="slider" data-slider>
-        {%- for slide in site.data.slider -%}
-        <div class="slide {% if forloop.first %}is-active{% endif %}">
-          <img src="{{ slide.image | relative_url }}" alt="{{ slide.alt }}">
-          <div class="slide-caption">
-            <h2>{{ slide.title }}</h2>
-            <p>{{ slide.text }}</p>
-            {%- if slide.url %}<a class="go" href="{{ slide.url | relative_url }}" aria-label="{{ slide.title }}">&rarr;</a>{% endif -%}
-          </div>
-        </div>
-        {%- endfor -%}
-        <div class="slider-controls">
-          <button type="button" data-slider-prev aria-label="Previous slide">&#9664;</button>
-          <button type="button" data-slider-toggle aria-label="Pause slideshow">&#10073;&#10073;</button>
-          <button type="button" data-slider-next aria-label="Next slide">&#9654;</button>
-        </div>
+  <div class="hero" data-slider>
+    {%- for slide in site.data.slider -%}
+    <div class="slide {% if forloop.first %}is-active{% endif %}">
+      <div class="slide-media">
+        <img src="{{ slide.image | relative_url }}" alt="{{ slide.alt }}">
       </div>
-
-      <div class="home-side">
-        {%- for promo in site.data.promos -%}
-        <div class="promo">
-          <h2>{{ promo.title }}</h2>
-          <p>{{ promo.text }}</p>
-          <a class="go" href="{{ promo.url | relative_url }}" aria-label="{{ promo.title }}">&rarr;</a>
-        </div>
-        {%- endfor -%}
-
-        <div class="calendar">
-          <h2>Calendar</h2>
-          {%- for event in site.data.calendar -%}
-          <div class="calendar-item">
-            <p class="calendar-kind">{{ event.kind }}</p>
-            <h3>{{ event.title }}</h3>
-            <p>From: {{ event.from }} to {{ event.to }}</p>
-          </div>
-          {%- endfor -%}
-          <a class="btn" href="{{ '/news/' | relative_url }}">More events &rarr;</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="newsfeed">
-      {%- for item in paginator.posts -%}
-        {% include news-item.html item=item %}
-      {%- endfor -%}
-
-      <div class="pagination">
-        <span class="count">
-          Displaying results {{ paginator.page | minus: 1 | times: paginator.per_page | plus: 1 }}&ndash;{% if paginator.page == paginator.total_pages %}{{ paginator.total_posts }}{% else %}{{ paginator.page | times: paginator.per_page }}{% endif %}
-          out of {{ paginator.total_posts }}
-        </span>
-        {%- if paginator.previous_page %}
-          <a href="{{ paginator.first_page_path | relative_url }}">&lt;&lt; First</a>
-          <a href="{{ paginator.previous_page_path | relative_url }}">&lt; Previous</a>
-        {%- endif -%}
-        {%- if paginator.next_page %}
-          <a href="{{ paginator.next_page_path | relative_url }}">Next &gt;</a>
-          <a href="{{ paginator.last_page_path | relative_url }}">Last &gt;&gt;</a>
-        {%- endif -%}
+      <div class="slide-caption">
+        <h2>{{ slide.title }}</h2>
+        <p>{{ slide.text }}</p>
+        {%- if slide.url %}<a href="{{ slide.url | relative_url }}">{{ slide.title }}</a>{% endif -%}
       </div>
     </div>
-
+    {%- endfor -%}
+    <div class="slider-controls">
+      <button type="button" data-slider-prev aria-label="Previous slide">&#9664;</button>
+      <button type="button" data-slider-toggle aria-label="Pause slideshow">&#10073;&#10073;</button>
+      <button type="button" data-slider-next aria-label="Next slide">&#9654;</button>
+    </div>
   </div>
+
+  <div class="boxes">
+    {%- for promo in site.data.promos -%}
+    <div class="box {% if forloop.first %}box--green{% else %}box--pink{% endif %}">
+      <h2>{{ promo.title }}</h2>
+      {%- if promo.text and promo.text != "" %}<p>{{ promo.text }}</p>{% endif -%}
+      <a class="arrow" href="{{ promo.url | relative_url }}">Read more</a>
+    </div>
+    {%- endfor -%}
+
+    <div class="box box--blue">
+      <h2>Calendar</h2>
+      {%- for event in site.data.calendar -%}
+      <div class="calendar-item">
+        <p class="calendar-kind">{{ event.kind }}</p>
+        <h3>{{ event.title }}</h3>
+        <p>From: {{ event.from }} to {{ event.to }}</p>
+      </div>
+      {%- endfor -%}
+      <a class="arrow" href="{{ '/news/' | relative_url }}">More events</a>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>News</h2>
+    <a href="{{ '/news/' | relative_url }}">All news</a>
+  </div>
+
+  <div class="newsfeed">
+    {%- for item in paginator.posts -%}
+      {% include news-item.html item=item %}
+    {%- endfor -%}
+  </div>
+
+  <div class="pagination">
+    <span class="count">
+      Displaying results {{ paginator.page | minus: 1 | times: paginator.per_page | plus: 1 }}&ndash;{% if paginator.page == paginator.total_pages %}{{ paginator.total_posts }}{% else %}{{ paginator.page | times: paginator.per_page }}{% endif %}
+      out of {{ paginator.total_posts }}
+    </span>
+    {%- if paginator.previous_page %}
+      <a href="{{ paginator.first_page_path | relative_url }}">First</a>
+      <a href="{{ paginator.previous_page_path | relative_url }}">Previous</a>
+    {%- endif -%}
+    {%- if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">Next</a>
+      <a href="{{ paginator.last_page_path | relative_url }}">Last</a>
+    {%- endif -%}
+  </div>
+
 </div>

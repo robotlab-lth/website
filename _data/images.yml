@@ -1,0 +1,16 @@
+# Images borrowed from the sibling site www.robotics.lth.se (RobotLab LTH),
+# which runs the same Lund University design. They are referenced by URL
+# because this repository has no local copies yet.
+#
+# To make the site self-contained, download each file into assets/img/ and
+# change the value here to a local path, e.g. /assets/img/lth-logo.svg:
+#
+#   curl -o assets/img/lth-logo.svg \
+#     "https://www.robotics.lth.se/themes/custom/lu_theme/images/logos/logo__default--right_lth_en.svg"
+#
+# Every reference has a local placeholder as an onerror fallback, so a broken
+# or expired URL degrades to the placeholder instead of a missing image.
+
+lth_logo: "https://www.robotics.lth.se/themes/custom/lu_theme/images/logos/logo__default--right_lth_en.svg"
+lth_logo_negative: "https://www.robotics.lth.se/sites/robotics.lth.se/files/LTH-NEG-ENG.svg"
+robotlab_photo: "https://www.robotics.lth.se/sites/robotics.lth.se/files/styles/lu_infobox_desktop/public/2025-09/Robotlabbet%286%29-BW.jpg.webp?h=810b210d&itok=yiLJRalg"

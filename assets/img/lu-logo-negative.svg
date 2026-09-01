@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 96" role="img" aria-label="Lund University, LTH Faculty of Engineering">
+  <!-- Fallback used only if the LTH logotype in _data/images.yml cannot load.
+       Replace with the official logotype from LU's Image and Media Bank. -->
+  <circle cx="44" cy="48" r="30" fill="none" stroke="#ffffff" stroke-width="1.6"/>
+  <circle cx="44" cy="48" r="25" fill="none" stroke="#ffffff" stroke-width="0.8"/>
+  <text x="92" y="42" font-family="Garamond, Georgia, serif" font-size="27" fill="#ffffff">LUND UNIVERSITY</text>
+  <text x="92" y="70" font-family="Helvetica, Arial, sans-serif" font-size="15" letter-spacing="1" fill="#ffffff">LTH | FACULTY OF ENGINEERING</text>
+</svg>

@@ -2,8 +2,59 @@
 title: Projects
 slug: projects
 order: 2
-updated: 2024-10-08
+updated: 2026-09-01
 ---
+
+The group has **47 projects** registered in the
+[Lund University Research Portal](https://portal.research.lu.se/en/organisations/robotics-and-semantic-systems/projects/)
+— 22 active, 24 finished and 1 not yet started. The most recent additions and
+the group's long-running programmes are described below.
+
+## Recently started
+
+### Safe Reinforcement Learning of Humanoid Locomanipulation Policies
+
+Reinforcement learning for humanoid robots that must move and manipulate at the
+same time, with safety treated as a first-class constraint rather than an
+afterthought.
+
+PI: Davide Tateo, LU
+
+Funder: Crafoord Foundation
+
+Period: 2026-08-15 – 2027-06-30
+
+### MOUSE: Multimodal Multitask Learning for Reliable Robot Situational Awareness in Adverse Environmental Conditions
+
+Autonomous robots need robust perception and navigation in adverse environments,
+where sensors such as LiDAR, RADAR and RGB-D cameras often degrade or fail
+outright. MOUSE is an adaptive multimodal fusion framework that learns the
+complementary strengths of each sensor and dynamically selects the configuration
+best suited to the conditions at hand. Unlike existing approaches, it learns
+several downstream perception tasks jointly within a single framework, so that
+situational awareness improves across the board rather than task by task.
+
+PI: Eren Erdal Aksoy, LU
+
+Period: 2026-06-01 – 2030-05-31
+
+### Grandma Karl is 27 years old: automatic pseudonymization of research data
+
+A research environment addressing automatic pseudonymization of textual research
+data, so that data containing personal information can be opened up for reuse.
+The work covers algorithms that detect, label and replace personal identifiers in
+freely written text; analysis of how much replacement is needed for genuine
+protection, tested by re-identification attacks; and study of what
+pseudonymization does to the data itself — its readability and its continued
+usefulness for the research questions it was collected to answer.
+
+PI at LU: Xuan-Son Vu
+
+Funder: Swedish Research Council
+
+Period: 2025-02-01 – 2029-12-31
+
+## Ongoing programmes
 
 ### ELLIIT Project Situation Aware Perception for Safe Autonomous Robotics Systems
 

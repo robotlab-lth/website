@@ -1,0 +1,220 @@
+# ---------------------------------------------------------------------------
+# Content for the Research Areas page (/research/research-areas/).
+#
+# The layout _layouts/research-areas.html and the script
+# assets/js/research-areas.js both read from this file, so editing here
+# updates the section cards, the interactive topic map, the sticky anchor
+# nav and the record chart in one go.
+#
+# Fields per area:
+#   id         anchor id (section becomes #sec-<id>)
+#   legacy_id  the anchor the old page used, kept so old links still work
+#   name       heading and tile label
+#   tag        one line shown on the map tile
+#   connects   list of { to: <id>, via: <short reason> } used for the
+#              "connects to" pills and the interactive map
+#   intro      first paragraph (Markdown)
+#   detail     second paragraph (Markdown)
+#
+# Order matters: areas appear on the page and the map in this order.
+# Robotics stays first.
+# ---------------------------------------------------------------------------
+
+map_hint: Click an area and its connected areas light up in sage.
+
+areas:
+  - id: robotics
+    legacy_id: robotics
+    name: Robotics
+    tag: Manipulation, mobile robots, the Robotlab
+    connects:
+      - { to: cv, via: "MOUSE, perception in degraded conditions" }
+      - { to: ml, via: "safe RL for locomanipulation" }
+      - { to: kr, via: "behaviour trees for tasks" }
+      - { to: software, via: "reusable robot skills" }
+    intro: >-
+      Task-level programming, manipulation, mobile robots and autonomous model
+      cars, both indoors and outdoors. Experimental work runs in the
+      [Robotlab](/research/robotlab/).
+    detail: >-
+      **MOUSE** (2026 to 2030, PI Eren Erdal Aksoy) is the group's largest new
+      robotics commitment: perception and navigation for robots operating in
+      conditions that degrade their sensors. Construction remains an
+      application focus, through the SBUF work on measuring and setting-out
+      robots using the Boston Dynamics Spot platform to collect and feed back
+      site information.
+
+  - id: nlp
+    legacy_id: nlp
+    name: NLP
+    tag: Language models, anonymisation, language as robot interface
+    connects:
+      - { to: robotics, via: "language as an interface to robots" }
+      - { to: hri, via: "natural-language instruction" }
+    intro: >-
+      Natural language processing: parsing, semantic role labelling, word
+      embeddings and language models, and the use of language as an interface
+      to robots. The group's oldest line of work and still one of its largest.
+    detail: >-
+      Two current strands. **Grandma Karl is 27 years old** (Swedish Research
+      Council, 2025 to 2029, PI at LU Xuan-Son Vu) develops algorithms that
+      detect, label and replace personal identifiers in freely written Swedish
+      text, so that research data containing personal information can be
+      opened up for reuse. The project also studies what that replacement does
+      to the readability and research value of the text it rewrites.
+      Separately, *MixtureVitae* (Transactions on Machine Learning Research,
+      2026) builds a web-scale pretraining corpus from permissive-first
+      sources, addressing where the data for large language models may
+      legitimately come from.
+
+  - id: ml
+    legacy_id: machine-learning
+    name: Machine learning
+    tag: Learning from demonstration, RL, probabilistic models
+    connects:
+      - { to: robotics, via: "RL for manipulation, self-reliant robots" }
+      - { to: cv, via: "normalizing flows, perception modelling" }
+      - { to: bayes, via: "probabilistic methods" }
+    intro: >-
+      Learning from demonstration, reinforcement learning for manipulation,
+      and probabilistic modelling of perceptual outcomes.
+    detail: >-
+      **Safe Reinforcement Learning of Humanoid Locomanipulation Policies**
+      (Crafoord Foundation, 2026 to 2027, PI Davide Tateo) treats safety as a
+      constraint on the learning problem for robots that move and manipulate
+      at once. On the generative-policy side, *Normalizing flows are capable
+      models for bi-manual visuomotor policy* (Li, Kristoffersson Lind, Xie,
+      Stenmark and Krueger, 2026) argues that flows are a viable alternative
+      to diffusion for two-armed visuomotor control. Faseeh Ahmad's 2025
+      doctoral thesis, *Towards self-reliant robots*, combines behaviour
+      trees, reinforcement learning and vision-language models so that a robot
+      can recover from its own failures rather than stopping at them.
+
+  - id: bayes
+    legacy_id: bayesian-optimisation
+    name: Bayesian optimisation
+    tag: Sample-efficient search, automated experiment design
+    connects:
+      - { to: ml, via: "prior-guided acquisition" }
+      - { to: robotics, via: "cyber-physical system testing" }
+    intro: >-
+      Sample-efficient optimisation of expensive black-box functions:
+      high-dimensional search spaces, prior-guided acquisition, and the
+      automated design of experiments.
+    detail: >-
+      The methods travel well beyond robotics. *Falsification of
+      Cyber-physical Systems Using Bayesian Optimization* (ACM Transactions on
+      Embedded Computing Systems, 24(3), 2025) uses them to hunt for
+      specification-violating inputs to cyber-physical systems, a way of
+      testing by directed search rather than sampling. *Accelerating aqueous
+      electrolyte design with automated full-cell battery experimentation and
+      Bayesian optimization* (Cell Reports Physical Science, 6(5), 2025)
+      closes the loop with a physical lab, letting the optimiser choose which
+      battery cell to build next.
+
+  - id: cv
+    legacy_id: computer-vision
+    name: Computer vision
+    tag: Trusted perception, uncertainty, sensor selection
+    connects:
+      - { to: robotics, via: "MOUSE, ELLIIT Situation Aware Perception" }
+      - { to: ml, via: "GPify, flows for confidence scores" }
+    intro: >-
+      Reliable perception for autonomous systems: object detection and pose
+      estimation, latent space learning and tracking, and adaptation of
+      sensing to the situation at hand. Increasingly the question is not only
+      what the network predicts but how much that prediction should be
+      trusted.
+    detail: >-
+      *GPify* (International Journal of Computer Vision, 134, 2026, open
+      access) combines normalizing flows with a classifier's softmax output to
+      produce a confidence score that remains meaningful on
+      out-of-distribution input, the case that makes robot perception brittle
+      outside the benchmark. Simon Kristoffersson Lind's 2026 doctoral thesis,
+      *Uncertainty estimation for adaptable and reliable robotic vision*, sets
+      out the wider argument. MOUSE extends this to sensor choice itself,
+      learning the complementary strengths of LiDAR, RADAR and RGB-D and
+      selecting between them as conditions change, while learning several
+      downstream perception tasks jointly rather than one at a time. The
+      long-running ELLIIT project **Situation Aware Perception for Safe
+      Autonomous Robotics Systems** (PI Volker Krueger) supplies the
+      underlying approach: let the system decide, in each situation, how to
+      sense.
+
+  - id: hri
+    legacy_id: human-robot-interaction
+    name: Human robot interaction
+    tag: Mixed initiative, VR teleoperation, shared awareness
+    connects:
+      - { to: nlp, via: "instructing robots in language" }
+      - { to: robotics, via: "Quest2ROS2 teleoperation" }
+      - { to: software, via: "Quest2ROS2 as released framework" }
+    intro: >-
+      Mixed-initiative interaction, instructing robots in natural language,
+      and shared situational awareness between human and robot teams.
+    detail: >-
+      *Quest2ROS2* (HRI 2026) is a ROS 2 framework for bi-manual teleoperation
+      from a VR headset, used both as an interface in its own right and as a
+      way of collecting demonstration data for the learning work above. The
+      ELLIIT project **Collaborative robotics** (co-PI Elin Anna Topp, with
+      Patrick Doherty at LiU) pursues distributed situation awareness and
+      two-way communication in emergency-rescue settings involving unmanned
+      aircraft and human responders. Human systems integration for such
+      aircraft is treated directly in *Designing for dealing with drone
+      dilemmas* (CRC Press, 2026), which sets out ten trade-offs designers
+      cannot avoid making.
+
+  - id: kr
+    legacy_id: knowledge-representation
+    name: Knowledge representation
+    tag: Ontologies, semantic maps, behaviour trees
+    connects:
+      - { to: robotics, via: "task representation and repair" }
+      - { to: cv, via: "VLM-driven failure diagnosis" }
+    intro: >-
+      Ontologies and knowledge integration for robot systems, semantic maps
+      and reasoning about actions and change.
+    detail: >-
+      Behaviour trees are the group's working representation for robot tasks:
+      legible enough to inspect and edit, structured enough to reason over.
+      *Addressing Failures in Robotics Using Vision-Based Language Models
+      (VLMs) and Behavior Trees (BT)* (European Robotics Forum 2025) uses a
+      vision-language model to diagnose why an execution failed and to repair
+      the tree accordingly, putting a learned component in charge of a
+      symbolic structure rather than replacing it.
+
+  - id: software
+    legacy_id: software
+    name: Software
+    tag: Architectures and tooling others can build on
+    connects:
+      - { to: robotics, via: "skill libraries across platforms" }
+      - { to: hri, via: "Quest2ROS2" }
+    intro: >-
+      Software architectures, skill libraries and tooling that make robot
+      systems reusable across platforms and accessible to small and
+      medium-sized enterprises.
+    detail: >-
+      Recent output is released as usable software rather than described only
+      in papers. Quest2ROS2 is a case in point, published as a framework for
+      others to build on. Roughly two thirds of the group's registered output
+      is conference papers, which reflects where systems work of this kind is
+      discussed.
+
+# "How the record breaks down". Keep the list sorted largest first: the top
+# entry sets the scale for the bars.
+record:
+  title: How the record breaks down
+  lede: >-
+    Subject classifications on the group's 341 registered outputs, largest
+    first.
+  source_label: Lund University Research Portal
+  source_url: https://portal.research.lu.se/en/organisations/robotics-and-semantic-systems/
+  rows:
+    - { name: Computer sciences, count: 185 }
+    - { name: Robotics and automation, count: 61 }
+    - { name: Control engineering, count: 41 }
+    - { name: Computer graphics and computer vision, count: 17 }
+    - { name: Natural language processing, count: 17 }
+    - { name: Computer systems, count: 11 }
+    - { name: Human computer interaction, count: 5 }

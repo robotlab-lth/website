@@ -1,0 +1,109 @@
+---
+layout: default
+---
+{%- comment -%}
+  Research Areas, redesigned. Everything on this page except the lede is
+  driven by _data/research_areas.yml; the lede is the page's own Markdown
+  content ({{ content }}). Styling lives in assets/css/research-areas.scss
+  and the interactive topic map in assets/js/research-areas.js. Without
+  JavaScript the map tiles are plain anchor links, so the page still works.
+{%- endcomment -%}
+{%- assign ra = site.data.research_areas -%}
+{%- assign docs = site[page.collection] | sort: 'order' -%}
+{%- assign tops = docs | where_exp: "d", "d.parent == nil" | where_exp: "d", "d.hidden != true" -%}
+
+<main class="wrap ra" id="main-content">
+
+  <div class="ra-topbar">
+    {% include breadcrumb.html %}
+    <nav class="ra-pills" aria-label="{{ page.category_name }} pages">
+      {%- for item in tops -%}
+      <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="is-current" aria-current="page"{% endif %}>{{ item.title }}</a>
+      {%- endfor -%}
+    </nav>
+  </div>
+
+  <header class="ra-header">
+    <h1>{{ page.title }}</h1>
+    <div class="ra-lede">{{ content }}</div>
+  </header>
+
+  <section class="ra-map" aria-labelledby="ra-map-title"
+           data-areas='{{ ra.areas | jsonify | escape }}'>
+    <div class="ra-map__head">
+      <h2 id="ra-map-title">How the areas connect</h2>
+      <p class="ra-map__hint" hidden data-ra-hint>{{ ra.map_hint }}</p>
+    </div>
+    <div class="ra-map__grid" data-ra-grid>
+      {%- for area in ra.areas -%}
+      <a class="ra-tile" href="#sec-{{ area.id }}" data-ra-tile="{{ area.id }}">
+        <span class="ra-tile__name">{{ area.name }}</span>
+        <span class="ra-tile__tag">{{ area.tag }}</span>
+        <span class="ra-tile__badge" hidden>Connected</span>
+      </a>
+      {%- endfor -%}
+    </div>
+    <div class="ra-map__detail" hidden data-ra-detail>
+      <p class="ra-map__detail-label"><strong data-ra-active-name></strong> connects through:</p>
+      <div class="ra-map__detail-links" data-ra-links></div>
+      <a class="ra-map__goto" href="#" data-ra-goto>Read the section &darr;</a>
+    </div>
+  </section>
+
+  <nav class="ra-anchors" aria-label="Sections on this page">
+    {%- for area in ra.areas -%}
+    <a href="#sec-{{ area.id }}">{{ area.name }}</a>
+    {%- endfor -%}
+    <a class="ra-anchors__record" href="#sec-record">The record</a>
+  </nav>
+
+  <div class="ra-sections">
+    {%- for area in ra.areas -%}
+    <section class="ra-card" id="sec-{{ area.id }}">
+      {%- if area.legacy_id and area.legacy_id != area.id -%}
+      <span id="{{ area.legacy_id }}" class="ra-legacy-anchor" aria-hidden="true"></span>
+      {%- endif -%}
+      <div class="ra-card__head">
+        <h2>{{ area.name }}</h2>
+        {%- if area.connects and area.connects.size > 0 -%}
+        <div class="ra-connects">
+          <span class="ra-connects__label">connects to</span>
+          {%- for link in area.connects -%}
+            {%- assign target = ra.areas | where: "id", link.to | first -%}
+            {%- if target -%}
+            <a href="#sec-{{ target.id }}">{{ target.name }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- endif -%}
+      </div>
+      <div class="ra-card__body">
+        {{ area.intro | markdownify }}
+        {{ area.detail | markdownify }}
+      </div>
+    </section>
+    {%- endfor -%}
+
+    <section class="ra-card ra-record" id="sec-record">
+      <h2>{{ ra.record.title }}</h2>
+      <p class="ra-record__lede">{{ ra.record.lede }}</p>
+      {%- assign max = ra.record.rows | map: "count" | sort | last -%}
+      <div class="ra-record__rows">
+        {%- for row in ra.record.rows -%}
+        {%- assign pct = row.count | times: 100.0 | divided_by: max | round -%}
+        {%- if pct < 3 %}{% assign pct = 3 %}{% endif -%}
+        <div class="ra-record__row">
+          <span class="ra-record__name">{{ row.name }}</span>
+          <span class="ra-record__track"><span class="ra-record__bar" style="width:{{ pct }}%"></span></span>
+          <span class="ra-record__count">{{ row.count }}</span>
+        </div>
+        {%- endfor -%}
+      </div>
+      <p class="ra-record__source">
+        Source: the <a href="{{ ra.record.source_url }}">{{ ra.record.source_label }}</a>.
+        Last updated: {{ page.updated | default: site.time | date: "%Y-%m-%d" }}
+      </p>
+    </section>
+  </div>
+
+</main>

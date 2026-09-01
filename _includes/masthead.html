@@ -1,15 +1,27 @@
+{%- comment -%}
+  Masthead in the robotics.lth.se arrangement: site name over a rule with the
+  faculty line beneath, then search, then the LTH/LU logotype on the right.
+{%- endcomment -%}
 <header class="masthead">
   <div class="wrap">
-    <div>
+    <div class="masthead-id">
       <h1 class="masthead-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+      <hr class="masthead-rule">
       <p class="masthead-sub">{{ site.tagline }}</p>
     </div>
-    <div class="masthead-logo">
-      <a href="https://www.lth.se/">
-        <img src="{{ site.data.images.lth_logo }}"
-             onerror="this.onerror=null;this.src='{{ '/assets/img/lu-logo.svg' | relative_url }}';"
-             alt="LTH, Faculty of Engineering, Lund University">
-      </a>
+    <div class="masthead-tools">
+      <form class="searchbox" action="https://www.google.com/search" method="get" role="search">
+        <input type="hidden" name="as_sitesearch" value="lth.se">
+        <input type="text" name="q" aria-label="Search this site" placeholder="Search this site">
+        <button type="submit">Search</button>
+      </form>
+      <span class="masthead-logo">
+        <a href="https://www.lth.se/">
+          <img src="{{ site.data.images.lth_logo }}"
+               onerror="this.onerror=null;this.src='{{ '/assets/img/lu-logo.svg' | relative_url }}';"
+               alt="LTH, Faculty of Engineering, Lund University">
+        </a>
+      </span>
     </div>
   </div>
 </header>

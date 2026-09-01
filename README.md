@@ -66,25 +66,28 @@ Front matter that controls placement:
 
 ## Design
 
-The look follows Lund University's graphic profile as implemented on
-[www.robotics.lth.se](https://www.robotics.lth.se/start) (RobotLab LTH):
+The look follows the current design of
+[www.robotics.lth.se](https://www.robotics.lth.se/start) (RobotLab LTH), which
+implements Lund University's graphic profile:
 
-- **Colour.** Bronze `#9c6114` and dark blue `#000080` come from the LU
-  logotype. The pastels — pink, light blue, green, beige, grey — carry most of
-  the colour, bronze complements them, and dark blue is held back for the
-  logotype and the footer. White and open space dominate, which is what the
-  profile asks for.
-- **Type.** Adobe Garamond Pro for headings and introductions, Frutiger LT Std
-  for body text, per the profile. Both are licensed fonts, so the stacks in
-  `style.scss` use them when a visitor has them installed and fall back to
-  EB Garamond and Source Sans 3 otherwise.
+- **Restrained colour.** Near-black text on white. A single pale sage panel
+  colour carries the cards, bronze `#9c6114` appears only as an accent (the
+  faculty line under the site name, the current menu item), and the profile's
+  dark blue is confined to the footer band and the logotype.
+- **Type.** Adobe Garamond Pro for headings, Frutiger LT Std for body text, per
+  the profile. Both are licensed, so the stacks in `style.scss` use them when a
+  visitor has them installed and fall back to EB Garamond and Source Sans 3.
+- **Components.** Photograph with a white caption panel overlapping its lower
+  left corner and a tinted label bar beneath; pale panels whose headline ends
+  in a circled chevron; outlined pill buttons; a centred introduction under the
+  hero.
 - **Structure.** Utility bar with the parent-organisation links, masthead with
-  the site name and the LTH logotype, a horizontal menu with drop-down
-  submenus, breadcrumb plus section menu on inner pages, and a dark blue footer
-  with the negative logotype, contact block and related-site columns.
+  the site name over a rule and the search box and logotype to the right, a
+  quiet horizontal menu with drop-down submenus, and a dark footer holding the
+  negative logotype, contact block and site links.
 
 Content was not touched in the restyle. Every page, news item and data value is
-the same as before; only the templates and the stylesheet changed.
+the same; only the templates and the stylesheet changed.
 
 ## Images
 

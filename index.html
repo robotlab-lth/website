@@ -1,19 +1,24 @@
 ---
 layout: default
 ---
-<div class="wrap" id="main-content">
+<div class="wrap home" id="main-content">
 
   <div class="hero" data-slider>
     {%- for slide in site.data.slider -%}
     <div class="slide {% if forloop.first %}is-active{% endif %}">
-      <div class="slide-media">
+      <div class="hero-media">
         <img src="{{ slide.image | relative_url }}" alt="{{ slide.alt }}">
+        <div class="hero-caption">
+          <h2>
+            {%- if slide.url -%}
+            <a href="{{ slide.url | relative_url }}">{{ slide.title }}<span class="chev" aria-hidden="true">&#8250;</span></a>
+            {%- else -%}
+            {{ slide.title }}
+            {%- endif -%}
+          </h2>
+        </div>
       </div>
-      <div class="slide-caption">
-        <h2>{{ slide.title }}</h2>
-        <p>{{ slide.text }}</p>
-        {%- if slide.url %}<a href="{{ slide.url | relative_url }}">{{ slide.title }}</a>{% endif -%}
-      </div>
+      <p class="hero-label">{{ slide.text }}</p>
     </div>
     {%- endfor -%}
     <div class="slider-controls">
@@ -23,17 +28,24 @@ layout: default
     </div>
   </div>
 
-  <div class="boxes">
-    {%- for promo in site.data.promos -%}
-    <div class="box {% if forloop.first %}box--green{% else %}box--pink{% endif %}">
-      <h2>{{ promo.title }}</h2>
+  {%- assign lead = site.data.promos | first -%}
+  {%- if lead -%}
+  <div class="intro">
+    <p>{{ lead.title }}{% if lead.text and lead.text != "" %} {{ lead.text }}{% endif %}</p>
+    <a class="btn" href="{{ lead.url | relative_url }}">Read more</a>
+  </div>
+  {%- endif -%}
+
+  <div class="cards">
+    {%- for promo in site.data.promos offset: 1 -%}
+    <div class="card">
+      <h2><a href="{{ promo.url | relative_url }}">{{ promo.title }}<span class="chev" aria-hidden="true">&#8250;</span></a></h2>
       {%- if promo.text and promo.text != "" %}<p>{{ promo.text }}</p>{% endif -%}
-      <a class="arrow" href="{{ promo.url | relative_url }}">Read more</a>
     </div>
     {%- endfor -%}
 
-    <div class="box box--blue">
-      <h2>Calendar</h2>
+    <div class="card">
+      <h2><a href="{{ '/news/' | relative_url }}">Calendar<span class="chev" aria-hidden="true">&#8250;</span></a></h2>
       {%- for event in site.data.calendar -%}
       <div class="calendar-item">
         <p class="calendar-kind">{{ event.kind }}</p>
@@ -41,7 +53,6 @@ layout: default
         <p>From: {{ event.from }} to {{ event.to }}</p>
       </div>
       {%- endfor -%}
-      <a class="arrow" href="{{ '/news/' | relative_url }}">More events</a>
     </div>
   </div>
 
